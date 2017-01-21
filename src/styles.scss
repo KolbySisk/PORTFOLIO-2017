@@ -1,0 +1,35 @@
+// @font-face {
+//   font-family: 'Againts';
+//   src: url('fonts/againts/Againts.eot');
+//   src: url('fonts/againts/Againts.eot?#iefix') format('embedded-opentype'),
+//     url('fonts/againts/Againts.woff') format('woff'),
+//     url('fonts/againts/Againts.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+html {
+  font-family: "roboto",sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #060b13;
+}
+
+.container{
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+h2{
+  font-size: 36px;
+  color: #f9f4ec;
+}
+p{
+  line-height: 24px;
+  font-size: 18px;
+  color: #f9f4ec;
+}
