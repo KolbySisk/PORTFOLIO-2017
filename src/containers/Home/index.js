@@ -1,7 +1,15 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { selectTechnology } from './actions'
 import './styles.scss'
 
-export default class Home extends Component{
+class Home extends Component{
+	createListItems(){
+  	return this.props.technologies.map((technology) => {
+  		return (<div key={technology.id} onClick={() => this.props.selectTechnology(technology)}>{technology.name}</div>)
+  	})
+  }
+
 	render(){
 		return (
 			<section className="home-container">
@@ -15,6 +23,7 @@ export default class Home extends Component{
 							</div>
 							<div className="top-right-for-now">
 								<h2>I like</h2>
+								{this.createListItems()}
 							</div>
 						</div>
 					</section>
@@ -22,8 +31,10 @@ export default class Home extends Component{
 					<section className="section-2">
 						
 					</section>
-
 			</section>
 		)
 	}
 }
+
+const mapStateToProps = (state) => ({technologies: state.technologies})
+export default connect(mapStateToProps, { selectTechnology })(Home)
