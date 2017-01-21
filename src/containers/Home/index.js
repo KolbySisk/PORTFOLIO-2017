@@ -1,15 +1,8 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
-import { selectTechnology } from './actions'
+import TechnologyList from '../TechnologyList'
 import './styles.scss'
 
 class Home extends Component{
-	createListItems(){
-  	return this.props.technologies.map((technology) => {
-  		return (<div key={technology.id} onClick={() => this.props.selectTechnology(technology)}>{technology.name}</div>)
-  	})
-  }
-
 	render(){
 		return (
 			<section className="home-container">
@@ -23,7 +16,7 @@ class Home extends Component{
 							</div>
 							<div className="top-right-for-now">
 								<h2>I like</h2>
-								{this.createListItems()}
+								<TechnologyList technologies={this.props.technologies}/>
 							</div>
 						</div>
 					</section>
@@ -36,5 +29,4 @@ class Home extends Component{
 	}
 }
 
-const mapStateToProps = (state) => ({technologies: state.technologies})
-export default connect(mapStateToProps, { selectTechnology })(Home)
+export default Home

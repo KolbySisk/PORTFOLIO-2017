@@ -1,19 +1,24 @@
 const Technologies = (state = [], action) => {
 	return [{
 		id: 1,
-		name: 'Angular'
+		name: 'Angular',
+		imagePath: '/images/technology-image-angular.png'
 	},{
 		id: 2,
-		name: 'React'
+		name: 'React',
+		imagePath: '/images/technology-image-react.png'
 	},{
 		id: 3,
-		name: 'Cordova'
+		name: 'Cordova',
+		imagePath: '/images/technology-image-cordova.png'
 	},{
 		id: 4,
-		name: 'C#'
+		name: 'C#',
+		imagePath: '/images/technology-image-csharp.png'
 	},{
 		id: 5,
-		name: 'PHP'
+		name: 'PHP',
+		imagePath: '/images/technology-image-php.png'
 	}]
 }
 
