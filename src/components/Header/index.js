@@ -6,8 +6,8 @@ export default class Header extends Component{
 		return (
 			<header className="site-header">
 				<div className="site-banner">
-          <img src={'/images/logo.png'} alt="my logo - kolby sisk :)#" className="logo"/>
-          <img src={'/images/home-banner.jpg'} alt="sweet banner" className="site-banner-image"/>
+          <img src={'/images/logo.png'} alt="my logo - kolby sisk :)#" className="site-banner__logo"/>
+          <img src={'/images/home-banner.jpg'} alt="sweet banner" className="site-banner__image"/>
         </div>
 			</header>
 		)

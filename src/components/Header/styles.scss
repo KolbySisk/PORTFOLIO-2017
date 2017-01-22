@@ -2,10 +2,12 @@
 	position: relative;
 	margin-bottom: 40px;
 }
-.site-banner-image{
+.site-banner__image{
 	width: 100%;
 }
-.logo{
+.site-banner__logo{
+  height: 80%;
+  max-height: 191px;
 	position: absolute;
 	top: 50%;
 	left: 50%;

@@ -8,13 +8,13 @@ class Home extends Component{
 	render(){
 		return (
 			<section className="home-container">
-					<section className="section-1">
+					<section className="home__section-1">
 						<div className="container">
 							<Intro />
 							<TechnologyList technologies={this.props.technologies} />
 						</div>
 					</section>
-					<section className="section-2">
+					<section className="home__section-2">
 						<Stuff />
 					</section>
 			</section>
