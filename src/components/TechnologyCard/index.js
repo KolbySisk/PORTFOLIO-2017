@@ -11,6 +11,7 @@ const TechnologyCard = ({technology, onClick}) => (
     </div>
     <footer className="technology-card__footer">
       <h2>See stuff</h2>
+      <div className="arrow bounce"></div>
     </footer>
   </article>
 )
