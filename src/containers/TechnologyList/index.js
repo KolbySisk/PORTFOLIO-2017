@@ -12,9 +12,9 @@ class TechnologyList extends Component{
 
   render(){
     return (
-      <div className="top-right-for-now">
+      <div className="technology-list">
         <h2>I like</h2>
-        <div className="technology-list">
+        <div className="technology-list__list">
           {this.props.technologies.map(technology =>
             <TechnologyCard
               key={technology.id}

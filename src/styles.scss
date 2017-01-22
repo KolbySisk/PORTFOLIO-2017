@@ -13,21 +13,20 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
 body {
   margin: 0;
   background: #060b13;
 }
-
 .container{
-  max-width: 1700px;
+  max-width: 95%;
   margin: 0 auto;
 }
-
 h2{
-  font-size: 36px;
-  color: #f9f4ec;
-}
+    margin-bottom: 20px;
+    font-family: 'Againts';
+    font-weight: normal;
+    font-style: normal;
+  }
 p{
   line-height: 24px;
   font-size: 18px;

@@ -1,10 +1,8 @@
-.top-right-for-now{
-  width: 67%;
-  height: 300px;
-  float: left;
+.technology-list{
+  flex: 67%;
   color: white;
 }
-.technology-list{
+.technology-list__list{
   display: flex;
   flex-direction: row;
   align-items: center;

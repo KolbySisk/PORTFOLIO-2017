@@ -1,15 +1,12 @@
 .section-1{
-  overflow: hidden;
-  h2{
-    margin-bottom: 20px;
-    font-family: 'Againts';
-      font-weight: normal;
-      font-style: normal;
+  .container{
+    display: flex;
+    flex-direction: row;
   }
 }
 .section-2{
   height: 1800px;
   background: url('/images/home-background.jpg') no-repeat;
   background-position: center top;
-    background-size: 100% auto;
+  background-size: 100% auto;
 }

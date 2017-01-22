@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TechnologyList from '../TechnologyList'
 import Intro from '../../components/Intro'
+import Stuff from '../Stuff'
 import './styles.scss'
 
 class Home extends Component{
@@ -13,9 +14,8 @@ class Home extends Component{
 							<TechnologyList technologies={this.props.technologies} />
 						</div>
 					</section>
-
 					<section className="section-2">
-						
+						<Stuff />
 					</section>
 			</section>
 		)
