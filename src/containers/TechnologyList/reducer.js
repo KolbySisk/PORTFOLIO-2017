@@ -1,4 +1,10 @@
-const Technologies = (state = [], action) => {
+import { TECHNOLOGY_SELECTED } from './constants'
+
+const initialState = {
+  selectedTechnology: null
+}
+
+export const Technologies = () => {
 	return [{
 		id: 1,
 		name: 'Angular',
@@ -22,18 +28,11 @@ const Technologies = (state = [], action) => {
 	}]
 }
 
-const SelectedTechnology = (state = [], action) => {
+export const TechnologyListReducer = (state = initialState, action) => {
 	switch(action.type){
-		case 'TECHNOLOGY_SELECTED':
-			console.log('technology selected!', action);
-			return action.payload;
-
+		case TECHNOLOGY_SELECTED:
+			return { ...state, selectedTechnology: action.technology.id }
 		default:
-			return state;
+			return state
 	}
-}
-
-export default {
-	Technologies: Technologies,
-	SelectedTechnology: SelectedTechnology
 }

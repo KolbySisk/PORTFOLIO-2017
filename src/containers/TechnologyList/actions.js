@@ -1,6 +1,5 @@
-export const selectTechnology = (technology) => {
-	return {
-		type: 'TECHNOLOGY_SELECTED',
-		payload: technology
-	}
+import { TECHNOLOGY_SELECTED } from './constants'
+
+export const technologySelected = (technology) => {
+  return { type: TECHNOLOGY_SELECTED, technology }
 }

@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import TechnologyCard from '../../components/TechnologyCard'
-import { selectTechnology } from './actions'
+import { technologySelected } from './actions'
 import './styles.scss'
 
 class TechnologyList extends Component{
   onTechnologyClick = (technology) => {
-    this.props.selectTechnology(technology)
-    window.scrollTo(0, 500);
+    this.props.technologySelected(technology)
+    //indow.scrollTo(0, 500)
   }
 
   render(){
@@ -18,6 +18,7 @@ class TechnologyList extends Component{
           {this.props.technologies.map(technology =>
             <TechnologyCard
               key={technology.id}
+              active={this.props.technologyListReducer.selectedTechnology === technology.id}
               technology={technology}
               onClick={() => this.onTechnologyClick(technology)}
             />
@@ -28,5 +29,9 @@ class TechnologyList extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({technologies: state.technologies})
-export default connect(mapStateToProps, { selectTechnology })(TechnologyList)
+const mapStateToProps = (state) => ({
+  technologies: state.technologies,
+  technologyListReducer: state.technologyListReducer
+})
+
+export default connect(mapStateToProps, { technologySelected })(TechnologyList)

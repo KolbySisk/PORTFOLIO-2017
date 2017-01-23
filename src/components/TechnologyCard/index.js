@@ -1,8 +1,8 @@
 import React from 'react'
 import './styles.scss'
 
-const TechnologyCard = ({technology, onClick}) => (
-  <article className="technology-card" onClick={onClick}>
+const TechnologyCard = ({technology, active, onClick}) => (
+  <article className={"technology-card " + (active ? 'active' : '')} onClick={onClick}>
     <header className="technology-card__header">
       <h1>{technology.name}</h1>
     </header>

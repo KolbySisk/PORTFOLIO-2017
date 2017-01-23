@@ -12,15 +12,21 @@
     box-shadow: 0 0 5px 2px #e71625;
     flex: 25%;
   }
+  &.active{
+    .technology-card__header{
+      background: #72c60c;
+    }
+  }
   .technology-card__header{
-    background: #72c60c;
+    background: #2c7700;
     color: #f9f4ec;
+    transition: all 0.3s ease;
     h1{
       margin: 0;
       padding: 15px 0;
       text-transform: uppercase;
       font-weight: normal;
-      font-size: 24px;
+      font-size: 20px;
       text-align: center;
     }
   }

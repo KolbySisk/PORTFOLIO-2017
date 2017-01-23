@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux'
-import TechnologyListReducers from './containers/TechnologyList/reducer'
+import { Technologies, TechnologyListReducer } from './containers/TechnologyList/reducer'
 
 const allReducers = combineReducers({
-  technologies: TechnologyListReducers.Technologies,
-  selectedTechnology: TechnologyListReducers.SelectedTechnology
+  technologies: Technologies,
+  technologyListReducer: TechnologyListReducer
 })
 
 export default createStore(allReducers)
