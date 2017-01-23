@@ -19,8 +19,7 @@ class TechnologyList extends Component{
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
     this.setState({
-      technologyListWidth: this.refs.technologyList.getBoundingClientRect().width,
-      stuffTitleHeight: document.getElementsByClassName("stuff__title ")[0].getBoundingClientRect().height
+      technologyListWidth: this.refs.technologyList.getBoundingClientRect().width
     })
   }
 
@@ -41,7 +40,9 @@ class TechnologyList extends Component{
 
       // doing some extra work to make sure the list height is the same as the Stuff container's height. I'll refactor this
       let headerHeight = this.refs.technologyList.querySelector("header").getBoundingClientRect().height
-      Array.prototype.slice.call(this.refs.technologyList.querySelectorAll('.technology-card__body')).map(x => x.style.height = this.state.stuffTitleHeight -headerHeight + "px")
+      let stuffTitleHeight = document.getElementsByClassName("stuff__title ")[0].getBoundingClientRect().height
+
+      Array.prototype.slice.call(this.refs.technologyList.querySelectorAll('.technology-card__body')).map(x => x.style.height = stuffTitleHeight - headerHeight + "px")
 
       this.setState({ technologyListOriginalY: winScrollY + technologyListY })
       this.props.technologyListStucked(true)

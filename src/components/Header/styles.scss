@@ -1,6 +1,8 @@
 ﻿.site-banner{
 	position: relative;
 	margin-bottom: 40px;
+  max-height: 500px;
+  overflow: hidden;
 }
 .site-banner__image{
 	width: 100%;

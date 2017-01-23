@@ -1,12 +1,12 @@
-// @font-face {
-//   font-family: 'Againts';
-//   src: url('fonts/againts/Againts.eot');
-//   src: url('fonts/againts/Againts.eot?#iefix') format('embedded-opentype'),
-//     url('fonts/againts/Againts.woff') format('woff'),
-//     url('fonts/againts/Againts.ttf') format('truetype');
-//   font-weight: normal;
-//   font-style: normal;
-// }
+@font-face {
+  font-family: 'Againts';
+  src: url('../public/fonts/againts/againts.eot');
+  src: url('../public/fonts/againts/againts.eot?#iefix') format('embedded-opentype'),
+    url('../public/fonts/againts/againts.woff') format('woff'),
+    url('../public/fonts/againts/againts.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   font-family: "roboto",sans-serif;

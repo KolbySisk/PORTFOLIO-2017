@@ -4,7 +4,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  width: 0;
   &:hover{
     z-index: 2;
     box-shadow: 0 0 5px 2px #e71625;
@@ -15,18 +15,12 @@
       background: #72c60c;
     }
   }
-  .stuck &{
-    //overflow: visible;
-  }
   .technology-card__header{
     background: #2c7700;
     color: #f9f4ec;
     transition: all 0.7s ease;
     position: relative;
     z-index: 1;
-    .stuck &{
-      //margin-bottom: -56px;
-    }
     h1{
       margin: 0;
       padding: 15px 0;
@@ -49,6 +43,7 @@
     overflow: hidden;
     img{
       transition: all 0.7s ease;
+      transform: scale(.8);
       .stuck &{
         transform: scale(.3);
       }
