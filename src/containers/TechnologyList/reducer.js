@@ -1,7 +1,8 @@
-import { TECHNOLOGY_SELECTED } from './constants'
+import { TECHNOLOGY_SELECTED, TECHNOLOGY_LIST_STUCKED } from './constants'
 
 const initialState = {
-  selectedTechnology: null
+  selectedTechnology: null,
+  technologyListStuck: false
 }
 
 export const Technologies = () => {
@@ -31,7 +32,9 @@ export const Technologies = () => {
 export const TechnologyListReducer = (state = initialState, action) => {
 	switch(action.type){
 		case TECHNOLOGY_SELECTED:
-			return { ...state, selectedTechnology: action.technology.id }
+			return { ...state, selectedTechnology: action.payload }
+		case TECHNOLOGY_LIST_STUCKED:
+			return { ...state, technologyListStuck: action.payload }
 		default:
 			return state
 	}

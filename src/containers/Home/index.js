@@ -9,13 +9,15 @@ class Home extends Component{
 		return (
 			<section className="home-container">
 					<section className="home__section-1">
-						<div className="container">
+						<div className="container flex">
 							<Intro />
 							<TechnologyList technologies={this.props.technologies} />
 						</div>
 					</section>
 					<section className="home__section-2">
-						<Stuff />
+						<div className="container">
+							<Stuff />
+						</div>
 					</section>
 			</section>
 		)

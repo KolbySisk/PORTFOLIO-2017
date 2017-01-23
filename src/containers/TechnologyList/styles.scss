@@ -1,9 +1,14 @@
 .technology-list{
   flex: 67%;
   color: white;
-}
-.technology-list__list{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  position: relative;
+  .technology-list__list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &.stuck{
+      position: fixed;
+      top: 20px;
+    }
+  }
 }

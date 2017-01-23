@@ -1,0 +1,29 @@
+.stuff{
+  display: flex;
+  flex-direction: row;
+  .stuff__title{
+    width: 33%;
+    background: #2c7700;
+    position: relative;
+    &.stuck{
+      position: fixed;
+      top: 20px;
+    }
+    h2{
+      font-size: 60px;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      &:after{
+        content: "";
+        display: block;
+        background: #2c7700;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -100%;
+        right: 100%;
+      }
+    }
+  }
+}

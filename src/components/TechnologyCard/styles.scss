@@ -1,14 +1,12 @@
 .technology-card{
   flex: 20%;
-  display: inline-block;
   margin: 0 0 0 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  overflow: hidden;
   position: relative;
-  border: solid 0 #e71625;
+  overflow: hidden;
   &:hover{
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0 0 5px 2px #e71625;
     flex: 25%;
   }
@@ -17,10 +15,18 @@
       background: #72c60c;
     }
   }
+  .stuck &{
+    overflow: visible;
+  }
   .technology-card__header{
     background: #2c7700;
     color: #f9f4ec;
-    transition: all 0.3s ease;
+    transition: all 0.7s ease;
+    position: relative;
+    z-index: 1;
+    .stuck &{
+      //margin-bottom: -56px;
+    }
     h1{
       margin: 0;
       padding: 15px 0;
@@ -33,16 +39,28 @@
   .technology-card__body{
     background: #f9f4ec;
     height: 175px;
+    max-width: 100%;
+    z-index: 1;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.7s ease;
+    overflow: hidden;
     img{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateY(-50%) translateX(-50%);
+      transition: all 0.7s ease;
+      .stuck &{
+        transform: scale(.3);
+      }
     }
   }
   .technology-card__footer{
     background: #2c7700;
+    transition: all 0.7s ease;
+    overflow: hidden;
+    .stuck &{
+      margin-top: -70px;
+    }
     .arrow{
       padding-bottom: 5px;
     }

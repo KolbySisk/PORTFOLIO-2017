@@ -20,6 +20,11 @@ body {
 .container{
   max-width: 95%;
   margin: 0 auto;
+  position: relative;
+}
+.flex{
+  display: flex;
+  flex-direction: row;
 }
 h2{
     margin-bottom: 20px;
