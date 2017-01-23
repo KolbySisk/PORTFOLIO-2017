@@ -18,7 +18,7 @@ body {
   background: #060b13;
 }
 .container{
-  max-width: 95%;
+  max-width: 80%;
   margin: 0 auto;
   position: relative;
 }
@@ -27,15 +27,17 @@ body {
   flex-direction: row;
 }
 h2{
-    margin-bottom: 20px;
+  font-size: 32px;
+    margin-bottom: 10px;
     font-family: 'Againts';
     font-weight: normal;
     font-style: normal;
   }
 p{
-  line-height: 24px;
+  line-height: 23px;
   font-size: 18px;
   color: #f9f4ec;
+  letter-spacing: .5px;
 }
 
 @keyframes bounce {

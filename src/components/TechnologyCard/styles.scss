@@ -16,7 +16,7 @@
     }
   }
   .stuck &{
-    overflow: visible;
+    //overflow: visible;
   }
   .technology-card__header{
     background: #2c7700;
@@ -32,7 +32,7 @@
       padding: 15px 0;
       text-transform: uppercase;
       font-weight: normal;
-      font-size: 20px;
+      font-size: 16px;
       text-align: center;
     }
   }
@@ -72,7 +72,7 @@
       margin: 0;
       padding: 18px 0 5px 0;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 }

@@ -4,6 +4,16 @@
   padding-right: 50px;
   box-sizing: border-box;
   p{
+    margin-top: 0;
     margin-bottom: 20px;
+  }
+  a{
+    color: #e71625;
+    font-family: "roboto-slab",sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }
