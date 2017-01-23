@@ -65,7 +65,7 @@ class TechnologyList extends Component{
   onTechnologyClick = (technology) => {
     this.props.technologySelected(technology.id)
 
-    var anchor = document.querySelector('.home__section-2');
+    var anchor = document.querySelector('.stuff__title');
     var options = { speed: 500 };
     smoothScroll.animateScroll( anchor, null, options );
   }
