@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import TechnologyList from '../TechnologyList'
 import Intro from '../../components/Intro'
 import Stuff from '../Stuff'
-import StickyIcky from '../StickyIcky'
+import StickyTitle from '../../components/StickyTitle'
 import './styles.scss'
 
 class Home extends Component{
@@ -17,6 +17,7 @@ class Home extends Component{
 				</section>
 				<section className="home__section-2">
 					<div className="container">
+			      <StickyTitle title="Stuff"/>
 						<Stuff />
 					</div>
 				</section>

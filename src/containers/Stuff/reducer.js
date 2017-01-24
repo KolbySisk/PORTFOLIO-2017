@@ -1,7 +1,6 @@
-import { STUFF_TITLE_STUCKED } from './constants'
+import { } from './constants'
 
 const initialState = {
-  stuffTitleStuck: false
 }
 
 export const Stuff = () => {
@@ -19,10 +18,5 @@ export const Stuff = () => {
 }
 
 export const StuffReducer = (state = initialState, action) => {
-	switch(action.type){
-		case STUFF_TITLE_STUCKED:
-			return { ...state, stuffTitleStuck: action.payload }
-		default:
-			return state
-	}
+	return state
 }

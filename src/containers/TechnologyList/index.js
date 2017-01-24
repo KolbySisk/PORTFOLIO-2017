@@ -9,7 +9,7 @@ import './styles.scss'
 class TechnologyList extends Component{  
   onTechnologyClick = (technology) => {
     this.props.technologySelected(technology.id)
-    let anchor = document.querySelector('.stuff__title');
+    let anchor = document.querySelector('.stuff');
     let options = { speed: 800 };
     smoothScroll.animateScroll( anchor, null, options );
   }
@@ -18,7 +18,7 @@ class TechnologyList extends Component{
     return (
       <div className="technology-list">
         <h2>I like</h2>
-        <StickyIcky id="1">
+        <StickyIcky>
           <div className="technology-list__list">
             {this.props.technologies.map(technology =>
               <TechnologyCard

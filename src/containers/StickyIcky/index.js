@@ -1,14 +1,20 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { stickyIckyStucked, stickyIckyUnstucked } from './actions'
+import {
+  stickyIckyStucked,
+  stickyIckyUnstucked,
+  stickyIckyAdded
+} from './actions'
+
 import './styles.scss'
 
 class StickyIcky extends Component{
   constructor(props) {
     super(props)
-
+    
+    this.props.stickyIckyAdded()
     this.state = {
-      id: props.id,
+      id: this.props.stickyIckyReducer.stickyCount,
       stickyIckyWidth: null,
       originalY: null,
       debounce: false
@@ -17,7 +23,6 @@ class StickyIcky extends Component{
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-
     this.setState({
       stickyIckyWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
     })
@@ -43,9 +48,9 @@ class StickyIcky extends Component{
       this.refs.stickyIckyContainer.style.width = this.state.stickyIckyWidth + "px"
 
       // doing some extra work to make sure the list height is the same as the Stuff container's height. I'll refactor this
-      if(this.state.id === '1'){
+      if(this.state.id === 1 && document.getElementsByClassName("sticky__title ").length){
         let headerHeight = this.refs.stickyIckyContainer.querySelector("header").getBoundingClientRect().height
-        let stuffTitleHeight = document.getElementsByClassName("stuff__title ")[0].getBoundingClientRect().height
+        let stuffTitleHeight = document.getElementsByClassName("sticky__title ")[0].getBoundingClientRect().height
 
         Array.prototype.slice.call(this.refs.stickyIckyContainer.querySelectorAll('.technology-card__body')).map(x => x.style.height = stuffTitleHeight - headerHeight + "px")
       }
@@ -59,7 +64,7 @@ class StickyIcky extends Component{
 
     //unstick it if we scroll past the original y of the list
     else if(winScrollY + 20 < this.state.originalY && this.checkIfStickIckyIsStuck(this.state.id)){
-      if(this.state.id === '1') Array.prototype.slice.call(this.refs.stickyIckyContainer.querySelectorAll('.technology-card__body')).map(x => x.style.height = 175 + "px")
+      if(this.state.id === 1) Array.prototype.slice.call(this.refs.stickyIckyContainer.querySelectorAll('.technology-card__body')).map(x => x.style.height = 175 + "px")
       this.refs.stickyIckyContainer.removeAttribute("style")
       this.props.stickyIckyUnstucked(this.state.id)
       // debounce
@@ -83,5 +88,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { 
   stickyIckyStucked,
-  stickyIckyUnstucked
+  stickyIckyUnstucked,
+  stickyIckyAdded
 })(StickyIcky)
