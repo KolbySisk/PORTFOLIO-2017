@@ -1,12 +1,14 @@
 import { createStore, combineReducers } from 'redux'
 import { Technologies, TechnologyListReducer } from './containers/TechnologyList/reducer'
 import { Stuff, StuffReducer } from './containers/Stuff/reducer'
+import { StickyIckyReducer } from './containers/StickyIcky/reducer'
 
 const allReducers = combineReducers({
   technologies: Technologies,
   technologyListReducer: TechnologyListReducer,
   stuff: Stuff,
-  stuffReducer: StuffReducer
+  stuffReducer: StuffReducer,
+  stickyIckyReducer: StickyIckyReducer
 })
 
 export default createStore(allReducers)
