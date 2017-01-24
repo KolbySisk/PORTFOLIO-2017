@@ -1,7 +1,8 @@
 .sticky__title{
   width: 33%;
   background: #2c7700;
-  position: relative;
+  position: absolute;
+  z-index: 3;
   h2{
     font-size: 50px;
     color: white;
