@@ -9,30 +9,29 @@ import {
 import './styles.scss'
 
 class StickyIcky extends Component{
-  constructor(props) {
-    super(props)
-    
-    this.props.stickyIckyAdded()
-    this.state = {
-      id: this.props.stickyIckyReducer.stickyCount,
-      stickyIckyWidth: null,
-      originalY: null,
-      debounce: false
-    }
+  state = {
+    id: this.props.stickyIckyReducer.stickyCount,
+    stickyIckyWidth: null,
+    originalY: null,
+    debounce: false
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     window.addEventListener('scroll', this.handleScroll)
     this.setState({
       stickyIckyWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
     })
   }
 
-  componentWillUnmount = () => {
+  componentWillMount(){
+    this.props.stickyIckyAdded()
+  }
+
+  componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  checkIfStickIckyIsStuck = (id) => {
+  checkIfStickIckyIsStuck(id){
     return this.props.stickyIckyReducer.stuckStickyIckies.find(x => x === id)
   }
 
