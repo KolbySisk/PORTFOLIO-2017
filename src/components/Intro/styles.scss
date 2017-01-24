@@ -1,6 +1,8 @@
+@import "../../shared-styles.scss";
+
 .intro{
   flex: 33%;
-  color: white;
+  color: $white;
   padding-right: 50px;
   box-sizing: border-box;
   p{
@@ -8,8 +10,8 @@
     margin-bottom: 20px;
   }
   a{
-    color: #e71625;
-    font-family: "roboto-slab",sans-serif;
+    color: $red;
+    font-family: $roboto-slab;
     font-size: 16px;
     text-decoration: none;
     &:hover{

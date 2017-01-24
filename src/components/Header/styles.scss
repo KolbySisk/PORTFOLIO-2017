@@ -3,15 +3,15 @@
 	margin-bottom: 40px;
   max-height: 500px;
   overflow: hidden;
-}
-.site-banner__image{
-	width: 100%;
-}
-.site-banner__logo{
-  height: 80%;
-  max-height: 191px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
+  .site-banner__image{
+    width: 100%;
+  }
+  .site-banner__logo{
+    height: 80%;
+    max-height: 191px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }

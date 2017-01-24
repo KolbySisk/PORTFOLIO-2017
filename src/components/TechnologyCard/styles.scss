@@ -1,3 +1,5 @@
+@import "../../shared-styles.scss";
+
 .technology-card{
   flex: 20%;
   margin: 0 0 0 1px;
@@ -7,17 +9,17 @@
   width: 0;
   &:hover{
     z-index: 2;
-    box-shadow: 0 0 5px 2px #e71625;
+    box-shadow: 0 0 5px 2px $red;
     flex: 25%;
   }
   &.active{
     .technology-card__header{
-      background: #72c60c;
+      background: $light-green;
     }
   }
   .technology-card__header{
     background: #2c7700;
-    color: #f9f4ec;
+    color: $white;
     transition: all 0.7s ease;
     position: relative;
     z-index: 1;
@@ -31,7 +33,7 @@
     }
   }
   .technology-card__body{
-    background: #f9f4ec;
+    background: $white;
     height: 175px;
     max-width: 100%;
     z-index: 1;
@@ -60,8 +62,8 @@
       padding-bottom: 5px;
     }
     h2{
-      color: #f9f4ec;
-      font-family: "roboto-slab",sans-serif;
+      color: $white;
+      font-family: $roboto-slab;
       font-size: 16px;
       text-align: center;
       margin: 0;

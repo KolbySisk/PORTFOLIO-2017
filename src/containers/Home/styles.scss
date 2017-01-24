@@ -1,6 +1,8 @@
+@import "../../shared-styles.scss";
+
 .home__section-2{
   background: url('/images/home-background.jpg') no-repeat;
   background-position: center top;
   background-size: 100% auto;
-  padding: 50px 0;
+  padding: $vertical-spacing 0;
 }

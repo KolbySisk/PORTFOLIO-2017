@@ -1,3 +1,5 @@
+@import "../../shared-styles.scss";
+
 .stuff-card{
   flex: 0 0 33%;
   overflow: hidden;
@@ -7,7 +9,7 @@
   cursor: pointer;
   &:hover{
     z-index: 2;
-    box-shadow: 0 0 5px 2px #e71625;
+    box-shadow: 0 0 5px 2px $red;
   }
   img{
     width: 100%;
@@ -17,15 +19,15 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #f9f4ec;
+    background: $white;
     h2{
-      font-family: "roboto-slab",sans-serif;
+      font-family: $roboto-slab;
       margin: 0;
       padding: 15px 0;
       font-weight: normal;
       font-size: 16px;
       text-align: left;
-      color: #e71625;
+      color: $red;
       padding-left: 10px;
     }
   }

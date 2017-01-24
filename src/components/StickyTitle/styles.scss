@@ -1,18 +1,20 @@
+@import "../../shared-styles.scss";
+
 .sticky__title{
   width: 33%;
-  background: #2c7700;
+  background: $green;
   position: absolute;
   z-index: 3;
   box-shadow: 0 2px 4px rgba(0,0,0,.5);
   h2{
     font-size: 50px;
-    color: #f9f4ec;
+    color: $white;
     margin: 0;
     padding: 20px 10px;
     &:after{
       content: "";
       display: block;
-      background: #2c7700;
+      background: $green;
       position: absolute;
       top: 0;
       bottom: 0;

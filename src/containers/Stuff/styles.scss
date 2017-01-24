@@ -1,9 +1,11 @@
+@import "../../shared-styles.scss";
+
 .stuff{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: space-between;
   flex-wrap: wrap;
-  align-items: center; 
+  align-items: center;
   padding-top: 150px;
 }

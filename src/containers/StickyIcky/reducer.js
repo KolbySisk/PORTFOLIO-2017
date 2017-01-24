@@ -5,7 +5,7 @@ import {
 } from './constants'
 
 const initialState = {
-  stickyCount: 0,
+  stickyCount: 1,
   stuckStickyIckies: []
 }
 
