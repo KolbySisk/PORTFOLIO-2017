@@ -5,7 +5,7 @@
   z-index: 3;
   h2{
     font-size: 50px;
-    color: white;
+    color: #f9f4ec;
     margin: 0;
     padding: 20px 10px;
     &:after{
@@ -22,6 +22,6 @@
 }
 .stuck .sticky__title{
   position: fixed;
-  top: 20px;
+  top: 0;
   width: inherit;
 }

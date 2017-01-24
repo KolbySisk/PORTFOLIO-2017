@@ -4,7 +4,7 @@ import './styles.scss'
 const StuffCard = ({stuff, active, onClick}) => (
   <article className="stuff-card" onClick={onClick}>
     <div className="stuff-card__body">
-      <img src={stuff.imagePath} alt="react" />
+      <img src={stuff.imagePath} alt={stuff.name} />
     </div>
     <footer className="stuff-card__footer">
       <h2>{stuff.name}</h2>
