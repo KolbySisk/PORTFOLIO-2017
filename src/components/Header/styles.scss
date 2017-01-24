@@ -1,10 +1,22 @@
-﻿.site-banner{
+﻿@import "../../shared-styles.scss";
+
+.site-banner{
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: $vertical-spacing;
   max-height: 500px;
   overflow: hidden;
+  min-height: 150px;
   .site-banner__image{
     width: 100%;
+    @media (max-width: $mobile-breakpoint) {
+      width: auto;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
   }
   .site-banner__logo{
     height: 80%;
@@ -13,5 +25,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    z-index: 1;
   }
 }
+
+
+
+

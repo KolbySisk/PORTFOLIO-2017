@@ -5,6 +5,9 @@
   color: $white;
   padding-right: 50px;
   box-sizing: border-box;
+  @media (max-width: $tablet-breakpoint) {
+    padding-right: 0;
+  }
   p{
     margin-top: 0;
     margin-bottom: 20px;
