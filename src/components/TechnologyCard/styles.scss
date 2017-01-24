@@ -20,7 +20,7 @@
   .technology-card__header{
     background: #2c7700;
     color: $white;
-    transition: all 0.7s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
     h1{
@@ -41,10 +41,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.7s ease;
+    transition: all 0.3s ease;
     overflow: hidden;
     img{
-      transition: all 0.7s ease;
+      transition: all 0.3s ease;
       transform: scale(.8);
       .stuck &{
         transform: scale(.3);
@@ -53,7 +53,7 @@
   }
   .technology-card__footer{
     background: #2c7700;
-    transition: all 0.7s ease;
+    transition: all 0.3s ease;
     overflow: hidden;
     .stuck &{
       margin-top: -70px;
