@@ -9,9 +9,9 @@ import './styles.scss'
 class TechnologyList extends Component{  
   onTechnologyClick = (technology) => {
     this.props.technologySelected(technology.id)
-    let anchor = document.querySelector('.stuff');
-    let options = { speed: 800 };
-    smoothScroll.animateScroll( anchor, null, options );
+    let anchor = document.querySelector('.stuff')
+    let options = { speed: 800 }
+    smoothScroll.animateScroll( anchor, null, options )
   }
 
   render(){
