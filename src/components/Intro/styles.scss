@@ -13,12 +13,18 @@
     margin-bottom: 20px;
   }
   a{
-    color: $red;
+    border: solid 2px $red;
+    border-radius: 5px;
     font-family: $roboto-slab;
     font-size: 16px;
     text-decoration: none;
+    color: $red;
+    padding: 5px 10px;
+    text-align: center;
+    transition: all 0.1s ease;
     &:hover{
-      text-decoration: underline;
+      background: $red;
+      color: $white;
     }
   }
 }
