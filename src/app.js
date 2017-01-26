@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { applyRouterMiddleware, Router, hashHistory } from 'react-router'
 import { useScroll } from 'react-router-scroll'
 import { Provider } from 'react-redux'
-import AppLayout from './layouts/AppLayout'
+import AppLayout from './containers/AppLayout'
 import createRoutes from './routes'
 import AppStore from './store'
 
