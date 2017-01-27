@@ -1,5 +1,8 @@
 @import "../../shared-styles.scss";
 
+.home__section-1{
+  padding-top: $vertical-spacing;
+}
 .home__section-2{
   background: url('/images/home-background.jpg') no-repeat;
   background-position: center top;

@@ -27,7 +27,7 @@ const Home = ({technologies}) => (
 			</div>
 		</section>
 		<section className="home__section-3">
-			<ImageAndBox src="/images/me.jpg">
+			<ImageAndBox src="/images/me.jpg" alt="sexy guy smiling">
 				<h2><span className="top">Check out my</span> blog</h2>
 			</ImageAndBox>
 		</section>

@@ -11,15 +11,14 @@ import './styles.scss'
 class StickyIcky extends Component{
   state = {
     id: this.props.stickyIckyReducer.stickyCount,
-    stickyIckyWidth: null,
-    originalY: null,
-    debounce: false
+    originalWidth: null,
+    originalY: null
   }
 
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll)
     this.setState({
-      stickyIckyWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
+      originalWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
     })
   }
 
@@ -36,15 +35,13 @@ class StickyIcky extends Component{
   }
 
   handleScroll = (event) => {
-    if(this.state.debounce) return
-
     let winScrollY = window.scrollY
     let stickyIckyY = this.refs.stickyIckyContainer.getBoundingClientRect().top
 
     // if we scroll within 20 pixes of the technology list we stickify it
     // check first to make sure it isn't already stuck so we don't stickify it every scroll
-    if(stickyIckyY < 20 && !this.checkIfStickIckyIsStuck(this.state.id)){
-      this.refs.stickyIckyContainer.style.width = this.state.stickyIckyWidth + "px"
+    if(stickyIckyY < 10 && !this.checkIfStickIckyIsStuck(this.state.id)){
+      this.refs.stickyIckyContainer.style.width = this.state.originalWidth + "px"
 
       // specific case: set technology list to the same size as the sticky title, if one is on the page
       if(this.props.children.props.className === 'technology-list__list' && document.getElementsByClassName("sticky__title ").length){
@@ -55,21 +52,15 @@ class StickyIcky extends Component{
       }
       this.setState({ originalY: winScrollY + stickyIckyY })
       this.props.stickyIckyStucked(this.state.id)
-      // debounce
-      this.setState({ debounce: true })
-      setTimeout(() => { this.setState({ debounce: false }) }, 100)
     }
 
     //unstick it if we scroll past the original y of the list
-    else if(winScrollY + 20 < this.state.originalY && this.checkIfStickIckyIsStuck(this.state.id)){
+    else if(winScrollY + 10 < this.state.originalY && this.checkIfStickIckyIsStuck(this.state.id)){
       //specific case: set technology list back to default size
       if(this.props.children.props.className === 'technology-list__list') Array.prototype.slice.call(this.refs.stickyIckyContainer.querySelectorAll('.technology-card__body')).map(x => x.style.height = 175 + "px")
 
       this.refs.stickyIckyContainer.removeAttribute("style")
       this.props.stickyIckyUnstucked(this.state.id)
-      // debounce
-      this.setState({ debounce: true })
-      setTimeout(() => { this.setState({ debounce: false }) }, 100)
     }
   }
 
