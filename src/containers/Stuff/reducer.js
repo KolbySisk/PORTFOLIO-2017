@@ -1,4 +1,4 @@
-import { } from './constants'
+import { GET_STUFF } from './constants'
 
 const initialState = {}
 
@@ -55,5 +55,15 @@ export const Stuff = () => {
 }
 
 export const StuffReducer = (state = initialState, action) => {
-	return state
+	switch(action.type){
+		case GET_STUFF:
+			console.log('whooo')
+			return state
+		default:
+			return state
+	}
+}
+
+export const GetStuff = (state = initialState, action) => {
+	return { type: GET_STUFF }
 }

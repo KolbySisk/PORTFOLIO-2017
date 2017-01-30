@@ -12,5 +12,5 @@ export default function createRoutes() {
       name: 'about',
       component: About
     }
-  ];
+  ]
 }
