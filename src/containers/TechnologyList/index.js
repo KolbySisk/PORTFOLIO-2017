@@ -11,8 +11,7 @@ class TechnologyList extends Component{
     this.props.technologySelected(technology.id)
 
     Scroll.animateScroll.scrollTo(document.querySelector('.stuff').getBoundingClientRect().height-150, {
-      duration: 1500,
-      delay: 100,
+      duration: 800,
       smooth: true,
       isDynamic: true
     })
