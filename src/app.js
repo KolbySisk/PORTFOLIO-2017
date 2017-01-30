@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import { applyRouterMiddleware, Router, hashHistory } from 'react-router' //try browserHistory
-import { useScroll } from 'react-router-scroll'
+import { Router, hashHistory } from 'react-router' //try browserHistory
 import { Provider } from 'react-redux'
 import AppLayout from './containers/AppLayout'
 import createRoutes from './routes'
@@ -11,7 +10,7 @@ const rootRoute = {
   childRoutes: createRoutes(),
 }
 
-const store = configureStore();
+const store = configureStore()
 
 export default class App extends Component{
   render(){

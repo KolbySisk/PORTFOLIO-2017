@@ -1,28 +1,24 @@
-import { fork } from 'redux-saga/effects'
-import { takeEvery } from 'redux-saga'
+import { takeEvery } from 'redux-saga/effects'
 import { call, put } from 'redux-saga/effects'
+import { getStuff } from './api/portfolio'
 
-import axios from 'axios'
-//import watchSearchMedia from './watchers'
-
-export function GetStuff(){
+export function* loadStuff(){
   try{
-    //const response = yield call(axios.get, 'http://localhost:57144/api/stuff')
+    const response = yield call(getStuff)
+    const stuff = response.data
+    yield put({type: 'STUFF_RECEIVED', stuff})
   }
   catch(e){
     console.log(e)
   }
 }
 
-export function* watchGetStuff(){
-  console.log('yo')
-  //yield.takeEvery('GET_STUFF', GetStuff)
+export function* watchLoadStuff(){
+  yield takeEvery('LOAD_STUFF', loadStuff)
 }
 
-
 export default function* rootSaga(){
-  //yield fork()
-  // yield [
-  //   watchGetStuff(),
-  // ]
+  yield [
+    watchLoadStuff(),
+  ]
 }

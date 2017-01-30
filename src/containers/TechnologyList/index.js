@@ -23,7 +23,7 @@ class TechnologyList extends Component{
         <h2>I like</h2>
         <StickyIcky>
           <div className="technology-list__list">
-            {this.props.technologies.map(technology =>
+            {this.props.technologyListReducer.technologies.map(technology =>
               <TechnologyCard
                 key={technology.id}
                 active={this.props.technologyListReducer.selectedTechnology === technology.id}
@@ -39,7 +39,6 @@ class TechnologyList extends Component{
 }
 
 const mapStateToProps = (state) => ({
-  technologies: state.technologies,
   technologyListReducer: state.technologyListReducer
 })
 

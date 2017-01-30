@@ -1,25 +1,24 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import StuffCard from '../../components/StuffCard'
+import { loadStuff } from './actions'
 import './styles.scss'
 
 class Stuff extends Component{
   render(){
-    return (
+    return(
       <div className="stuff">
-        {this.props.stuff.map(stuff =>
-          <StuffCard
-            key={stuff.id}
-            stuff={stuff}
-          />
-        )}
+        { this.props.stuffReducer.stuff.map(stuff => <StuffCard key={stuff.id} stuff={stuff} /> )}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  stuff: state.stuff
+  stuffReducer: state.stuffReducer
 })
 
-export default connect(mapStateToProps)(Stuff)
+export default connect(mapStateToProps,
+  dispatch => bindActionCreators(loadStuff, dispatch)
+)(Stuff)
