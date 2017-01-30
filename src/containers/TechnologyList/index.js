@@ -3,15 +3,19 @@ import { connect } from 'react-redux'
 import TechnologyCard from '../../components/TechnologyCard'
 import StickyIcky from '../StickyIcky'
 import { technologySelected,  } from './actions'
-import smoothScroll from 'smooth-scroll' //https://github.com/cferdinandi/smooth-scroll
+import Scroll from 'react-scroll'
 import './styles.scss'
 
 class TechnologyList extends Component{  
   onTechnologyClick = (technology) => {
     this.props.technologySelected(technology.id)
-    let anchor = document.querySelector('.stuff')
-    let options = { speed: 800 }
-    smoothScroll.animateScroll( anchor, null, options )
+
+    Scroll.animateScroll.scrollTo(document.querySelector('.stuff').getBoundingClientRect().height-150, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+      isDynamic: true
+    })
   }
 
   render(){
