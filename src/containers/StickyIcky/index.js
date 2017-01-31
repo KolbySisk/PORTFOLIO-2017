@@ -21,7 +21,7 @@ class StickyIcky extends Component{
       this.setState({
         originalWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
       })
-    })
+    },100)
   }
 
   componentWillMount(){

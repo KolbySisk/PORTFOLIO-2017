@@ -10,7 +10,7 @@ class TechnologyList extends Component{
   onTechnologyClick = (technology) => {
     this.props.technologySelected(technology.id)
 
-    Scroll.animateScroll.scrollTo(document.querySelector('.stuff').getBoundingClientRect().height-150, {
+    Scroll.animateScroll.scrollTo(document.querySelector('.stuff').getBoundingClientRect().height, {
       duration: 800,
       smooth: true,
       isDynamic: true
