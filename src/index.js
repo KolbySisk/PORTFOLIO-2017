@@ -21,6 +21,9 @@ const initApp = () => {
 var fontA = new FontFaceObserver('Againts');
 var fontB = new FontFaceObserver('roboto');
 
-Promise.all([fontA.load(), fontB.load()]).then(function () {
-  initApp()
-})
+Promise.all([fontA.load(), fontB.load()])
+  .then(() => {
+    initApp()
+  }, () => {
+    initApp()
+  })
