@@ -16,9 +16,11 @@ class StickyIcky extends Component{
   }
 
   componentDidMount(){
-    window.addEventListener('scroll', this.handleScroll)
-    this.setState({
-      originalWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
+    setTimeout(() => {
+      window.addEventListener('scroll', this.handleScroll)
+      this.setState({
+        originalWidth: this.refs.stickyIckyContainer.firstChild.getBoundingClientRect().width
+      })
     })
   }
 

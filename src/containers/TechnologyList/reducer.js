@@ -30,8 +30,10 @@ const initialState = {
 
 export const TechnologyListReducer = (state = initialState, action) => {
 	switch(action.type){
+
 		case TECHNOLOGY_SELECTED:
 			return { ...state, selectedTechnology: action.payload }
+
 		default:
 			return state
 	}

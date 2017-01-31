@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import TechnologyCard from '../../components/TechnologyCard'
 import StickyIcky from '../StickyIcky'
-import { technologySelected,  } from './actions'
+import { technologySelected } from './actions'
 import Scroll from 'react-scroll'
 import './styles.scss'
 
