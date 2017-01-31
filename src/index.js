@@ -18,9 +18,9 @@ const initApp = () => {
   }
 }
 
-var font = new FontFaceObserver('Againts');
-font.load(null, 10000).then(function () {
-  initApp();
-}, function () {
-  initApp();
-});
+var fontA = new FontFaceObserver('Againts');
+var fontB = new FontFaceObserver('roboto');
+
+Promise.all([fontA.load(), fontB.load()]).then(function () {
+  initApp()
+})
