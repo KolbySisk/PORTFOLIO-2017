@@ -2,6 +2,7 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './app'
+import WebFont from 'webfontloader'
 import './styles.scss'
 
 const rootNode = document.getElementById('root')
@@ -14,3 +15,12 @@ if (module.hot) {
     ReactDOM.render(<NextApp />, rootNode)
   })
 }
+
+const WebFontConfig = {
+  custom: {
+    families: ['Againts'],
+    urls: ['./styles.scss']
+  }
+}
+
+WebFont.load(WebFontConfig)
