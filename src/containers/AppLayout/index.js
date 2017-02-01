@@ -3,7 +3,7 @@ import FontFaceObserver from 'fontfaceobserver'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-const fontAgaints = new FontFaceObserver('againts')
+const fontAgaints = new FontFaceObserver('Againts')
 const fontRoboto = new FontFaceObserver('roboto')
 const fontRobotoSlab = new FontFaceObserver('roboto-slab')
 
@@ -15,17 +15,21 @@ class AppLayout extends Component{
   }
 
   componentDidMount(){
-    fontAgaints.load(null, 20000).then(() => {
-      alert('yoo')
+    fontAgaints.load(null, 5000).then(() => {
+      this.setState({fontAgaintsLoaded: true})
+    }, () => {
       this.setState({fontAgaintsLoaded: true})
     })
 
-    fontRoboto.load(null, 20000).then(() => {
-      alert('wooo')
+    fontRoboto.load(null, 5000).then(() => {
+      this.setState({fontRobotoLoaded: true})
+    }, () => {
       this.setState({fontRobotoLoaded: true})
     })
 
-    fontRobotoSlab.load(null, 20000).then(() => {
+    fontRobotoSlab.load(null, 5000).then(() => {
+      this.setState({fontRobotoSlabLoaded: true})
+    }, () => {
       this.setState({fontRobotoSlabLoaded: true})
     })
   }
