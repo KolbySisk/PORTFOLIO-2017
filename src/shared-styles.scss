@@ -6,9 +6,37 @@ $white: #f9f4ec;
 $blue: #060b13;
 
 // app fonts
+// roboto
 $roboto: "roboto", Geneva, Tahoma, Verdana, sans-serif;
+$roboto-not-loaded: Geneva, Tahoma, Verdana, sans-serif;
+// roboto-slab
 $roboto-slab: "roboto-slab", "Lucida Bright", Georgia, serif;
+$roboto-slab-not-loaded: "Lucida Bright", Georgia, serif;
+// againts
 $againts: "Againts", "Lucida Bright", Georgia, serif;
+$againts-not-loaded: "Lucida Bright", Georgia, serif;
+
+%againts{
+  font-family: $againts-not-loaded;
+  .againts-loaded &{
+    font-family: $againts;
+  }
+}
+
+%roboto{
+  font-family: $roboto-not-loaded;
+  .roboto-loaded &{
+    font-family: $roboto;
+  }
+}
+
+%roboto-slab{
+  font-family: $roboto-slab-not-loaded;
+  .roboto-slab-loaded &{
+    font-family: $roboto-slab;
+  }
+}
+
 
 // app vertical spacing
 $vertical-spacing: 50px;

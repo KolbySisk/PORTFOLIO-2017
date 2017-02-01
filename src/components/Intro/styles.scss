@@ -13,9 +13,9 @@
     margin-bottom: 20px;
   }
   a{
+    @extend %roboto-slab;
     border: solid 2px $red;
     border-radius: 5px;
-    font-family: $roboto-slab;
     font-size: 16px;
     text-decoration: none;
     color: $red;

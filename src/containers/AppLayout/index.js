@@ -1,17 +1,47 @@
-import React from 'react'
+import React, {Component} from 'react'
+import FontFaceObserver from 'fontfaceobserver'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-const AppLayout = ({ children }) => (
-  <div className='site-container'>
-    <Header />
-    <main> {children} </main>
-    <Footer />
-  </div>
-)
+const fontAgaints = new FontFaceObserver('Againts')
+const fontRoboto = new FontFaceObserver('roboto')
+const fontRobotoSlab = new FontFaceObserver('roboto-slab')
 
-AppLayout.propTypes = {
-  children : React.PropTypes.element.isRequired
+class AppLayout extends Component{
+  state = {
+    fontAgaintsLoaded: false,
+    fontRobotoLoaded: false,
+    fontRobotoSlabLoaded: false
+  }
+
+  componentDidMount(){
+    fontAgaints.load(null, null).then(() => {
+      this.setState({fontAgaintsLoaded: true})
+    })
+
+    fontRoboto.load(null, null).then(() => {
+      this.setState({fontRobotoLoaded: true})
+    })
+
+    fontRobotoSlab.load(null, null).then(() => {
+      this.setState({fontRobotoSlabLoaded: true})
+    })
+  }
+
+  render(){
+    return (
+      <div className={
+        "site-container " + 
+        (this.state.fontAgaintsLoaded ? 'againts-loaded ' : '') + 
+        (this.state.fontRobotoLoaded ? 'roboto-loaded ' : '') + 
+        (this.state.fontRobotoSlabLoaded ? 'roboto-slab-loaded ' : '')
+      }>
+        <Header />
+        <main> {this.props.children} </main>
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default AppLayout

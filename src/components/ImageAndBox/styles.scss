@@ -45,7 +45,7 @@
       box-shadow: 0 0 5px 2px $red;
     }
     h2{
-      font-family: "roboto-slab",sans-serif;
+      @extend %roboto-slab;
       margin: 0;
       text-align: center;
       width: 100%;
