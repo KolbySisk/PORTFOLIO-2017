@@ -7,11 +7,16 @@
   background: url('/images/home-background.jpg') no-repeat;
   background-position: center top;
   background-size: 100% auto;
-  padding: $vertical-spacing 0;
   @media (max-width: $tablet-breakpoint) {
     background: url('/images/home-background__medium.jpg') no-repeat;
   }
   @media (max-width: $mobile-breakpoint) {
     background: url('/images/home-background__small.jpg') no-repeat;
+  }
+  .stuff-container{
+    padding: $vertical-spacing 0;
+  }
+  .contact-me-container{
+    padding: $vertical-spacing 0;
   }
 }

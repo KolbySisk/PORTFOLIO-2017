@@ -2,6 +2,7 @@ import React from 'react'
 import TechnologyList from '../TechnologyList'
 import Intro from '../../components/Intro'
 import ImageAndBox from '../../components/ImageAndBox'
+import ImageAndForm from '../../components/ImageAndForm'
 import Stuff from '../Stuff'
 import StickyTitle from '../../components/StickyTitle'
 import './styles.scss'
@@ -21,17 +22,42 @@ const Home = ({technologies}) => (
 			</div>
 		</section>
 		<section className="home__section-2">
-			<div className="container">
-	      <StickyTitle title="Stuff"/>
-				<Stuff />
+			<div className="stuff-container">
+				<div className="container">
+		      <StickyTitle title="Stuff"/>
+					<Stuff />
+				</div>
 			</div>
-		</section>
-		<section className="home__section-3">
-			<ImageAndBox src="/images/me.jpg" alt="sexy guy smiling">
-				<h2><span className="top">Check out my</span> blog</h2>
-			</ImageAndBox>
+			<div className="contact-me-container">
+				<div className="container">
+					<StickyTitle title="Contact Me"/>
+				
+					<ImageAndForm src="/images/me__33.jpg" alt="sexy guy smiling">
+						<section className="contact-form">
+							<header>
+								<h3>Email me</h3>
+								<h4>Feel free to say hi</h4>
+							</header>
+							<form>
+								<input type="text" placeholder="Your name" required />
+								<input type="text" placeholder="Your email address" required />
+								<input type="text" placeholder="Your phone number" required />
+								<textarea placeholder="Your message"></textarea>
+								<button>Send</button>
+							</form>
+
+						</section>
+					</ImageAndForm>
+
+				</div>
+			</div>
 		</section>
 	</section>
 )
 
 export default Home
+
+
+// <ImageAndBox src="/images/me.jpg" alt="sexy guy smiling">
+// 	<h2><span className="top">Check out my</span> blog</h2>
+// </ImageAndBox>
