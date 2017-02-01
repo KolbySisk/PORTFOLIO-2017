@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import { Router, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import AppLayout from './containers/AppLayout'
-import createRoutes from './routes'
-import configureStore from './stores'
+import configureRoutes from './routes/'
+import configureStore from './stores/'
 
 const rootRoute = {
   component: AppLayout,
-  childRoutes: createRoutes(),
+  childRoutes: configureRoutes(),
 }
 
 const store = configureStore()

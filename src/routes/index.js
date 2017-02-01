@@ -1,7 +1,7 @@
-import Home from './containers/Home'
-import About from './containers/About'
+import Home from '../containers/Home'
+import About from '../containers/About'
 
-export default function createRoutes() {
+export default function configureRoutes() {
   return [
     {
       path: '/',

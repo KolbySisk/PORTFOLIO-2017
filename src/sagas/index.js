@@ -1,4 +1,4 @@
-import StuffSaga from './containers/Stuff/saga'
+import StuffSaga from '../containers/Stuff/saga'
 
 export default function* rootSaga(){
   yield [
