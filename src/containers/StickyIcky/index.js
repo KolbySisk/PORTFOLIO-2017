@@ -30,6 +30,8 @@ class StickyIcky extends Component{
     let winScrollY = window.scrollY
     let stickyIckyY = stickyIckyContext.ref.getBoundingClientRect().top
 
+    console.log(stickyIckyContext)
+
     // if we scroll within 20 pixes of the technology list we stickify it
     // check first to make sure it isn't already stuck so we don't stickify it every scroll
     if(stickyIckyY < 10 && !stickyIckyContext.stuck){

@@ -80,6 +80,7 @@ button{
   transition: all 0.1s ease;
   display: inline-block;
   width: 100%;
+  cursor: pointer;
   &:hover{
     background: $red;
     color: $white;
