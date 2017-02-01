@@ -16,6 +16,7 @@ class AppLayout extends Component{
 
   componentDidMount(){
     fontAgaints.load(null, 20000).then(() => {
+      alert('yoo')
       this.setState({fontAgaintsLoaded: true})
     })
 
