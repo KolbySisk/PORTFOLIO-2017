@@ -41,7 +41,26 @@ p{
   color: $white;
   letter-spacing: .5px;
 }
-input[type="text"]{
+// form & input styles
+::-webkit-input-placeholder {
+  color: rgba(6, 10, 19, .5);
+}
+:-moz-placeholder {
+  color: rgba(6, 10, 19, .5);  
+}
+::-moz-placeholder {
+  color: rgba(6, 10, 19, .5);  
+}
+:-ms-input-placeholder {  
+  color: rgba(6, 10, 19, .5);  
+}
+input, textarea{
+  @extend %roboto;
+  font-size: 14px;
+  color: $blue;
+  
+}
+input[type="text"], input[type="email"]{
   height: 50px;
   width: 100%;
   background: white;

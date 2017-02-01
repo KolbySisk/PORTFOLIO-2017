@@ -38,36 +38,5 @@
   }
   .image-and-form__form{
     flex: 67%;
-    .contact-form{
-      background: $white;
-      header{
-        width: 100%;
-        background: $green;
-        color: $white;
-        padding: 25px 15px;
-        box-sizing: border-box;
-        line-height: 20px;
-        h3, h4{
-          margin: 0;
-          font-weight: 100;
-          display: inline-block;
-          width: 100%;
-        }
-        h3{
-          @extend %roboto-slab;
-          font-size: 26px;
-        }
-        h4{
-          @extend %roboto;
-          font-size: 11px;
-        }
-      }
-      form{
-        padding: 15px;
-        button{
-          width: 100%;
-        }
-      }
-    }
   }
 }
