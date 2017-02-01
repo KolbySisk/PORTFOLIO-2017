@@ -2,7 +2,9 @@ import {
   STICKY_ICKY_STUCKED,
   STICKY_ICKY_UNSTUCKED,
   STICKY_ICKY_ADDED,
-  STICKY_ICKY_WIDTH_CHANGE
+  STICKY_ICKY_WIDTH_CHANGE,
+  STICKY_ICKY_STOPPED,
+  STICKY_ICKY_UNSTOPPED
 } from './constants'
 
 const initialState = {
@@ -13,6 +15,7 @@ const stickyIckyObject = {
   id: null,
   ref: null,
   stuck: false,
+  stopped: false,
   width: null
 }
 
@@ -44,6 +47,18 @@ export const StickyIckyReducer = (state = initialState, action) => {
       var newState = Object.assign({}, state)
       var stickyIcky = newState.stickyIckies.find(si => si.id === action.payload.id)
       stickyIcky.width = action.payload.width
+      return newState
+
+    case STICKY_ICKY_STOPPED:
+      var newState = Object.assign({}, state)
+      var stickyIcky = newState.stickyIckies.find(si => si.id === action.payload)
+      stickyIcky.stopped = true
+      return newState
+
+    case STICKY_ICKY_UNSTOPPED:
+      var newState = Object.assign({}, state)
+      var stickyIcky = newState.stickyIckies.find(si => si.id === action.payload)
+      stickyIcky.stopped = false
       return newState
 
     default:

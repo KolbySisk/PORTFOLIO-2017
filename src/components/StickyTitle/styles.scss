@@ -6,6 +6,7 @@
   position: absolute;
   z-index: 3;
   box-shadow: 0 2px 4px rgba(0,0,0,.5);
+  transition: margin-top 0.3s ease;
   @media (max-width: $tablet-breakpoint) {
     width: 100%;
   }
