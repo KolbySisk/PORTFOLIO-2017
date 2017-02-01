@@ -7,7 +7,7 @@ import './styles.scss'
 
 const rootNode = document.getElementById('root')
 
-const initApp = () => {
+
   ReactDOM.render(<App />, rootNode)
 
   if (module.hot) {
@@ -16,14 +16,14 @@ const initApp = () => {
       ReactDOM.render(<NextApp />, rootNode)
     })
   }
-}
 
-var fontA = new FontFaceObserver('Againts');
-var fontB = new FontFaceObserver('roboto');
 
-Promise.all([fontA.load(), fontB.load()])
-  .then(() => {
-    initApp()
-  }, () => {
-    initApp()
-  })
+// var fontA = new FontFaceObserver('Againts');
+// var fontB = new FontFaceObserver('roboto');
+
+// Promise.all([fontA.load(), fontB.load()])
+//   .then(() => {
+//     initApp()
+//   }, () => {
+//     initApp()
+//   })
