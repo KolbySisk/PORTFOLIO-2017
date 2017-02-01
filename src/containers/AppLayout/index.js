@@ -21,6 +21,7 @@ class AppLayout extends Component{
     })
 
     fontRoboto.load(null, 20000).then(() => {
+      alert('wooo')
       this.setState({fontRobotoLoaded: true})
     })
 
