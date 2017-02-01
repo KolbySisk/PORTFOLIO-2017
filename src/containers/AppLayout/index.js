@@ -17,8 +17,10 @@ class AppLayout extends Component{
   componentDidMount(){
     fontAgaints.load(null, 5000).then(() => {
       this.setState({fontAgaintsLoaded: true})
+      alert('font loaded')
     }, () => {
       this.setState({fontAgaintsLoaded: true})
+      alert('font failed')
     })
 
     fontRoboto.load(null, 5000).then(() => {
@@ -37,7 +39,7 @@ class AppLayout extends Component{
   render(){
     return (
       <div className={
-        "site-container " + 
+        'site-container ' + 
         (this.state.fontAgaintsLoaded ? 'againts-loaded ' : '') + 
         (this.state.fontRobotoLoaded ? 'roboto-loaded ' : '') + 
         (this.state.fontRobotoSlabLoaded ? 'roboto-slab-loaded ' : '')
