@@ -3,7 +3,7 @@ import FontFaceObserver from 'fontfaceobserver'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-const fontAgaints = new FontFaceObserver('Againts')
+const fontAgaints = new FontFaceObserver('againts')
 const fontRoboto = new FontFaceObserver('roboto')
 const fontRobotoSlab = new FontFaceObserver('roboto-slab')
 
