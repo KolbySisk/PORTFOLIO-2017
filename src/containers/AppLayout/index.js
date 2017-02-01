@@ -15,21 +15,19 @@ class AppLayout extends Component{
   }
 
   componentDidMount(){
-    fontAgaints.load(null, 5000).then(() => {
+    fontAgaints.load(null, 3000).then(() => {
       this.setState({fontAgaintsLoaded: true})
-      alert('font loaded')
     }, () => {
       this.setState({fontAgaintsLoaded: true})
-      alert('font failed')
     })
 
-    fontRoboto.load(null, 5000).then(() => {
+    fontRoboto.load(null, 3000).then(() => {
       this.setState({fontRobotoLoaded: true})
     }, () => {
       this.setState({fontRobotoLoaded: true})
     })
 
-    fontRobotoSlab.load(null, 5000).then(() => {
+    fontRobotoSlab.load(null, 3000).then(() => {
       this.setState({fontRobotoSlabLoaded: true})
     }, () => {
       this.setState({fontRobotoSlabLoaded: true})
