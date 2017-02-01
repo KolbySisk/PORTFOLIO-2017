@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Router, hashHistory } from 'react-router' //try browserHistory
+import { Router, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import AppLayout from './containers/AppLayout'
 import createRoutes from './routes'
@@ -17,7 +17,7 @@ export default class App extends Component{
     return (
       <Provider store={store}>
         <Router
-          history={hashHistory}
+          history={browserHistory}
           routes={rootRoute} />
       </Provider>
     )
