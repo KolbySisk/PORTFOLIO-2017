@@ -19,8 +19,8 @@ class Parallaxer extends Component{
 
   handleScroll = (event) => {
     let winScrollY = window.scrollY
-    let newHeight = winScrollY * this.state.parallaxSpeed
-    this.refs.ParallaxerContainer.style.marginTop = newHeight + 'px'
+    let amountMoved = winScrollY * this.state.parallaxSpeed
+    this.refs.ParallaxerContainer.style.transform = "translateY("+amountMoved+"px)"
   }
 
   render(){
