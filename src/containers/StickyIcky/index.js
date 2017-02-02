@@ -14,7 +14,9 @@ import './styles.scss'
 class StickyIcky extends Component{
   state = {
     id: null,
-    originalTop: null
+    originalTop: null,
+    stickBuffer: 10, // max number of pixels that can be between the top of the sticky and the top of the page beforoe sticking
+    stopBuffer: 100 // max number of pixels that can be between the bottom of the sticky and the top of the container before hiding
   }
 
   componentDidMount(){
@@ -88,19 +90,19 @@ class StickyIcky extends Component{
 
     // if we scroll within 20 pixes of the technology list we stickify it
     // check first to make sure it isn't already stuck so we don't stickify it every scroll
-    if(stickyIckyY < 10 && !stickyIckyContext.stuck){
+    if(stickyIckyY < this.state.stickBuffer && !stickyIckyContext.stuck){
       this.stick(stickyIckyContext, winScrollY, stickyIckyY)
     }
     // unstick it if we scroll past the original y of the list
-    else if(winScrollY + 10 < this.state.originalTop && stickyIckyContext.stuck){
+    else if(winScrollY + this.state.stickBuffer < this.state.originalTop && stickyIckyContext.stuck){
       this.unstick(stickyIckyContext)
     }
     // stop at the bottom of the container
-    else if(containerBottom - stickyIckyHeight + 50 <= 0){
+    else if(containerBottom - stickyIckyHeight - this.state.stopBuffer <= 0){
       this.stop(stickyIckyContext, stickyIckyHeight)
     }
     // unstop when coming back into the container
-    else if(containerBottom >= 50){
+    else{
       this.unstop(stickyIckyContext, stickyIckyHeight)
     }
   }
