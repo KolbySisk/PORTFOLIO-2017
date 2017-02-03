@@ -9,6 +9,12 @@
   font-weight: normal;
   font-style: normal;
 }
+::selection {
+  background: $light-green;
+}
+::-moz-selection {
+  background: $light-green;
+}
 html {
   @extend %roboto;
   -ms-text-size-adjust: 100%;
