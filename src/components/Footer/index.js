@@ -8,18 +8,18 @@ class Footer extends Component{
       <section className="site-footer">
         <header>
           <nav className="footer-nav container">
-            <div className="footer-nav-item">
+            <a className="footer-nav-item" href="http://twitter.com/kolbysisk">
               <img src={'/images/icon-twitter.png'} alt="twitter icon"/>
-              <a href="http://twitter.com/kolbysisk">Twitter</a>
-            </div>
-            <div className="footer-nav-item">
+              <h3>Twitter</h3>
+            </a>
+            <a className="footer-nav-item" href="http://github.com/kolbysisk">
               <img src={'/images/icon-github.png'} alt="github icon"/>
-              <a href="http://github.com/kolbysisk">GitHub</a>
-            </div>
-            <div className="footer-nav-item">
+              <h3>GitHub</h3>
+            </a>
+            <a className="footer-nav-item" href="#">
               <img src={'/images/icon-beard.png'} alt="beard icon"/>
-              <a href="#">Blog</a>
-            </div>
+              <h3>Blog</h3>
+            </a>
           </nav>
         </header>
         <footer>
