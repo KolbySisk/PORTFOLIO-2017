@@ -24,9 +24,26 @@ class ContactForm extends Component {
         </header>
         <Notification />
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input name="name" type="text" placeholder="Your name" value={ name } onChange={this.handleChange.bind(this)} required/>
-          <input name="email" type="email" placeholder="Your email" value={ email } onChange={this.handleChange.bind(this)} required/>
-          <textarea name="message" placeholder="Your message" value={ message } onChange={this.handleChange.bind(this)} required></textarea>
+          <input 
+            name="name" 
+            type="text" 
+            placeholder="Your name" 
+            value={ name } 
+            onChange={this.handleChange.bind(this)} required
+          />
+          <input 
+            name="email" 
+            type="email" 
+            placeholder="Your email" 
+            value={ email } 
+            onChange={this.handleChange.bind(this)} required
+          />
+          <textarea 
+            name="message" 
+            placeholder="Your message" 
+            value={ message } 
+            onChange={this.handleChange.bind(this)} required>
+          </textarea>
           <button type="submit" >Send</button>
         </form>
       </section>

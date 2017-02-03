@@ -32,10 +32,11 @@
         }
         @media (max-width: $mobile-breakpoint) {
           flex-wrap: wrap;
-          a{
+          h3{
             font-size: 16px;
             flex: 100%;
             text-align: center;
+            margin: 0;
           }
           img{
             height: 20px;

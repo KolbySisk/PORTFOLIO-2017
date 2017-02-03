@@ -11,7 +11,7 @@ class Notty extends Component {
   render() {
     const { message, status } = this.props
     return (
-      <div className={"notty " + statusCodes[status]}> {status == 1 ? <FontAwesome name='check-circle'/> : <FontAwesome name='times-circle'/>} { message }</div>
+      <div className={"notty " + statusCodes[status]}> <FontAwesome name={status === 1 ? 'check-circle' : 'times-circle'} /> { message }</div>
     )
   }
 }

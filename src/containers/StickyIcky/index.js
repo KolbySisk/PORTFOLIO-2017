@@ -37,7 +37,7 @@ class StickyIcky extends Component{
       let headerHeight = stickyIckyContext.ref.querySelector("header").getBoundingClientRect().height
       let stuffTitleHeight = document.getElementsByClassName("sticky__title ")[0].getBoundingClientRect().height
 
-      Array.prototype.slice.call(stickyIckyContext.ref.querySelectorAll('.technology-card__body')).map(x => x.style.height = stuffTitleHeight - headerHeight + "px")
+      Array.from(stickyIckyContext.ref.querySelectorAll('.technology-card__body')).map(x => x.style.height = stuffTitleHeight - headerHeight + "px")
     }
     this.setState({ originalTop: winScrollY + stickyIckyY })
     this.props.stickyIckyStucked(this.state.id)
@@ -45,7 +45,7 @@ class StickyIcky extends Component{
 
   unstick(stickyIckyContext){
     //specific case: set technology list back to default size
-    if(this.props.children.props.className === 'technology-list__list') Array.prototype.slice.call(stickyIckyContext.ref.querySelectorAll('.technology-card__body')).map(x => x.style.height = 175 + "px")
+    if(this.props.children.props.className === 'technology-list__list') Array.from(stickyIckyContext.ref.querySelectorAll('.technology-card__body')).map(x => x.style.height = 175 + "px")
 
     this.refs.stickyIckyContainer.removeAttribute("style")
     this.props.stickyIckyUnstucked(this.state.id)
@@ -122,8 +122,9 @@ class StickyIcky extends Component{
   }
 
   render(){
+    let isStuck = this.checkIfStickIckyIsStuck() ? 'stuck' : ''
     return (
-      <div className={"sticky-icky " + (this.checkIfStickIckyIsStuck() ? 'stuck' : '')} ref="stickyIckyContainer">
+      <div className={"sticky-icky " + isStuck} ref="stickyIckyContainer">
         <Measure onMeasure={({width}) => this.setWidth(width)}>
           {this.props.children}
         </Measure>
