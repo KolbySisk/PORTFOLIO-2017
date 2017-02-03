@@ -1,19 +1,26 @@
-import { createStore, combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
-import { CONTACT_FORM_POSTED } from './constants'
+import {
+  CONTACT_FORM_UPDATED,
+  CONTACT_FORM_SUBMITTED
+} from './constants'
 
-const reducers = {
-  form: formReducer.plugin({
-    contact: (state, action) => {
-      switch(action.type) {
-        case CONTACT_FORM_POSTED:
-        console.log('yooo')
-          return undefined
-        default:
-          return state
-      }
-    }
-  })
+const initialState = {
+  name: '',
+  email: '',
+  message: ''
 }
 
-export const ContactFormReducer = combineReducers(reducers)
+export const ContactFormReducer = (state = initialState, action) => {
+  switch(action.type){
+
+    case CONTACT_FORM_UPDATED:
+      var newState = Object.assign({}, state)
+      newState[action.payload.name] = action.payload.value
+      return newState
+
+    case CONTACT_FORM_SUBMITTED:
+      return initialState
+
+    default:
+      return state
+  }
+}

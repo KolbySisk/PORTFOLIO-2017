@@ -15,7 +15,7 @@ class Notification extends Component {
     return(
       <div className="notification">
         {this.props.notificationReducer.notifications.map(notification =>
-          {return notification.dismissed ? '' : <Notty key={notification.id} message={notification.message} onInit={this.startTimer(notification)}></Notty>}
+          {return notification.dismissed ? '' : <Notty key={notification.id} status={notification.status} message={notification.message} onInit={this.startTimer(notification)}></Notty>}
         )}
       </div>
     )
