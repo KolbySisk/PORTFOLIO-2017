@@ -6,15 +6,10 @@ import ImageAndBox from '../../components/ImageAndBox'
 import ImageAndForm from '../../components/ImageAndForm'
 import Stuff from '../Stuff'
 import StickyTitle from '../../components/StickyTitle'
-import ContactForm from '../../components/ContactForm'
-import { contactFormSubmitted } from './actions'
+import ContactForm from '../../containers/ContactForm'
 import './styles.scss'
 
 class Home extends Component {
-	handleSubmit = (values) => {
-    this.props.contactFormSubmitted(values)
-  }
-
 	render(){
 		const { technologies } = this.props
 		return(
@@ -42,7 +37,7 @@ class Home extends Component {
 						<div className="container">
 							<StickyTitle title="Contact Me"/>
 							<ImageAndForm src="/images/me__33.jpg" alt="sexy guy smiling">
-								<ContactForm onSubmit={this.handleSubmit} />
+								<ContactForm />
 							</ImageAndForm>
 						</div>
 					</div>
@@ -56,4 +51,4 @@ const mapStateToProps = (state) => ({
   homeReducer: state.homeReducer
 })
 
-export default connect(mapStateToProps, { contactFormSubmitted })(Home)
+export default connect(mapStateToProps)(Home)
