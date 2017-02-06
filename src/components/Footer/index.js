@@ -16,7 +16,7 @@ class Footer extends Component{
               <img src={'/images/icon-github.png'} alt="github icon"/>
               <h3>GitHub</h3>
             </a>
-            <a className="footer-nav-item" href="#">
+            <a className="footer-nav-item" href="javascript:;" onClick={() => {alert('this isn\'t a thing yet')}}>
               <img src={'/images/icon-beard.png'} alt="beard icon"/>
               <h3>Blog</h3>
             </a>
