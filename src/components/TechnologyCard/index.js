@@ -7,7 +7,7 @@ const TechnologyCard = ({technology, active, onClick}) => (
       <h1>{technology.name}</h1>
     </header>
     <div className="technology-card__body">
-      <img src={technology.imagePath} alt={technology.name} />
+      <img src={technology.imagePath} alt={technology.name}  draggable="false"/>
     </div>
     <footer className="technology-card__footer">
       <h2>See stuff</h2>

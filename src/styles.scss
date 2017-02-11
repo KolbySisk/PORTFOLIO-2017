@@ -15,14 +15,12 @@
 ::-moz-selection {
   background: $light-green;
 }
-html {
-  @extend %roboto;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
 body {
+  @extend %roboto;
   margin: 0;
   background: $blue;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 .container{
   max-width: 80%;

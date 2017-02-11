@@ -5,7 +5,7 @@ import './styles.scss'
 const Header = () => (
   <header className="site-header">
     <div className="site-banner">
-      <img src={'/images/logo.png'} alt="my logo - kolby sisk :)#" className="site-banner__logo"/>
+      <img src={'/images/logo.png'} alt="my logo - kolby sisk :)#" className="site-banner__logo" draggable="false"/>
       <Parallaxer>
         <picture>
           <source srcSet="/images/home-banner.jpg" media="(min-width: 1280px)" />

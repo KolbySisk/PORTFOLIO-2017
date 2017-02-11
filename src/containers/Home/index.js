@@ -7,6 +7,7 @@ import ImageAndForm from '../../components/ImageAndForm'
 import Stuff from '../Stuff'
 import StickyTitle from '../../components/StickyTitle'
 import ContactForm from '../../containers/ContactForm'
+import Stats from '../../containers/Stats'
 import './styles.scss'
 
 class Home extends Component {
@@ -32,6 +33,13 @@ class Home extends Component {
 				      <StickyTitle title="Stuff"/>
 							<Stuff />
 						</div>
+					</div>
+					<div className="stats-container">
+						{ /*<div className="container">
+							<StickyTitle title="Stats"/>
+						</div>
+						*/}
+						<Stats />
 					</div>
 					<div className="contact-me-container">
 						<div className="container">
