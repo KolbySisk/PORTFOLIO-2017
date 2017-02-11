@@ -9,6 +9,10 @@
   color: white;
   background: rgba(0, 0, 0, .7);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
+  @media (max-width: $tablet-breakpoint) {
+    flex: 0 0 60%;
+    margin: inherit 0;
+  }
   a{
     color: inherit;
     text-decoration: none;
