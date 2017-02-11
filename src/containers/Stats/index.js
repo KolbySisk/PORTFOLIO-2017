@@ -4,7 +4,71 @@ import Stat from '../../components/Stat'
 import './styles.scss'
 
 class ContactForm extends Component {
+  state = {
+    snowboardData: [{  
+      "Date":"01/28/2017",
+      "ResortName":"Keystone",
+      "VerticalFeet":17413,
+      "TotalVerticalFeet":17413
+    },
+    {  
+      "Date":"01/21/2017",
+      "ResortName":"Keystone",
+      "VerticalFeet":20773,
+      "TotalVerticalFeet":20773
+    },
+    {  
+      "Date":"12/30/2016",
+      "ResortName":"Keystone",
+      "VerticalFeet":17967,
+      "TotalVerticalFeet":17967
+    },
+    {  
+      "Date":"12/29/2016",
+      "ResortName":"Keystone",
+      "VerticalFeet":9722,
+      "TotalVerticalFeet":9722
+    },
+    {  
+      "Date":"12/19/2016",
+      "ResortName":"Keystone",
+      "VerticalFeet":5263,
+      "TotalVerticalFeet":5263
+    },
+    {  
+      "Date":"12/11/2016",
+      "ResortName":"Keystone",
+      "VerticalFeet":6508,
+      "TotalVerticalFeet":6508
+    },
+    {  
+      "Date":"12/10/2016",
+      "ResortName":"Keystone",
+      "VerticalFeet":10471,
+      "TotalVerticalFeet":10471
+    }]
+  }
+
+  getSnowboardData(){
+    let data = []
+    let mostVerticalFeet = Math.max.apply(Math,this.state.snowboardData.map(function(o){return o.TotalVerticalFeet;}))
+
+    this.state.snowboardData.forEach((sd) => {
+      let dateArray = sd.Date.split('/')
+      console.log(sd.TotalVerticalFeet / mostVerticalFeet * 100)
+      data.push({
+        date: dateArray[0] + '/' + dateArray[1],
+        resortName: sd.ResortName,
+        value: sd.TotalVerticalFeet.toLocaleString(),
+        percent: (sd.TotalVerticalFeet / mostVerticalFeet * 100) + '%'
+      })
+    })
+
+    return data;
+  }
+
   render() {
+    let snowboardData = this.getSnowboardData()
     return (
       <section className="stats">
         <h1>coding and snowboarding</h1>
@@ -20,7 +84,6 @@ class ContactForm extends Component {
           </div>
 
           <div className="stats-snowboarding">
-
             <header className="header-stats">
               <div className="header-stat">
                 <h2 className="header-stat__value">120,667</h2>
@@ -46,58 +109,15 @@ class ContactForm extends Component {
 
             <div className="bar-chart-container">
               <div className="bar-chart">
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '100%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">10</h2>
-                  </div>                  
-                </div>
-
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '80%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">11</h2>
-                  </div>                  
-                </div>
-
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '68%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">17</h2>
-                  </div>              
-                </div>
-
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '100%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">10</h2>
-                  </div>                  
-                </div>
-
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '80%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">11</h2>
-                  </div>                  
-                </div>
-
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '68%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">17</h2>
-                  </div>              
-                </div>
-
-                <div className="bar-container">
-                  <div className="bar-chart__bar" style={{height: '100%'}}>
-                    <h3 className="bar-chart__value">12,000</h3>
-                    <h2 className="bar-chart__x">10</h2>
-                  </div>                  
-                </div>
-
-
+                {snowboardData.map((data, i) =>
+                  <div key={ i } className="bar-container">
+                    <div className="bar-chart__bar" style={{height: data.percent}}>
+                      <h3 className="bar-chart__value">{ data.value }</h3>
+                      <h2 className="bar-chart__x">{ data.date }</h2>
+                    </div>                  
+                  </div>
+                )}
               </div>
-
             </div>
           </div>
         </div>
