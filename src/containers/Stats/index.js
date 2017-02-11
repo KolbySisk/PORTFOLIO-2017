@@ -55,7 +55,6 @@ class ContactForm extends Component {
 
     this.state.snowboardData.forEach((sd) => {
       let dateArray = sd.Date.split('/')
-      console.log(sd.TotalVerticalFeet / mostVerticalFeet * 100)
       data.push({
         date: dateArray[0] + '/' + dateArray[1],
         resortName: sd.ResortName,
