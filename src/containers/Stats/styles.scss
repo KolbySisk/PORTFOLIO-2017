@@ -49,6 +49,7 @@
     box-sizing: border-box;
     @media (max-width: $mobile-breakpoint) {
       border-top: $vertical-spacing white solid;
+      border-left: none;
       flex: 0 0 100%;
     }
     .header-stats{
