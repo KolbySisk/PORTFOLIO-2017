@@ -147,11 +147,15 @@ class ContactForm extends Component {
   }
 
   getIncrementedValue(displayValue, endValue){
-    if(displayValue === endValue) return false
     if(displayValue === undefined || endValue === undefined) return false
 
-    let endValueArray = endValue.toString().replace(/,/g, '').split('')
-    let displayValueArray = displayValue.toString().replace(/,/g, '').split('')
+    let endValueCopy = endValue.toString().replace(/,/g, '')
+    let displayValueCopy = displayValue.toString().replace(/,/g, '')
+
+    if(displayValueCopy === endValueCopy) return false
+    
+    let endValueArray = endValueCopy.split('')
+    let displayValueArray = displayValueCopy.split('')
 
     while(displayValueArray.length !== endValueArray.length) displayValueArray.push("0")
 
