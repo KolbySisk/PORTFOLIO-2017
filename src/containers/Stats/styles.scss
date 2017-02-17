@@ -30,7 +30,9 @@
     align-items: center;
     position: relative;
     padding: 30px 0;
-    @media (max-width: $tablet-breakpoint) {
+    border-right: solid 10px white;
+    box-sizing: border-box;
+    @media (max-width: $mobile-breakpoint) {
       flex: 0 0 100%;
     }
   }
@@ -43,7 +45,10 @@
     overflow: auto;
     position: relative;
     min-height: 450px;
-    @media (max-width: $tablet-breakpoint) {
+    border-left: solid 10px white;
+    box-sizing: border-box;
+    @media (max-width: $mobile-breakpoint) {
+      border-top: $vertical-spacing white solid;
       flex: 0 0 100%;
     }
     .header-stats{
@@ -56,66 +61,6 @@
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
-      .header-stat{
-        text-align: center;
-        @media (max-width: $tablet-breakpoint) {
-          flex: 0 0 50%;
-        }
-        .header-stat__value{
-          @extend %roboto;
-          margin: 0;
-          color: $light-green;
-          font-size: 24px;
-          font-weight: bold;
-        }
-        .header-stat__title{
-          @extend %roboto;
-          margin: 0;
-          color: white;
-          font-size: 14px;
-          font-weight: lighter;
-        }
-      }
-      
-    }
-    .bar-chart-container{
-      margin-bottom: 30px;
-      width: 100%;
-
-      .bar-chart{
-        display: flex;;
-        .bar-container{
-          display: flex;
-          align-items: flex-end;
-          height: 250px;
-          .bar-chart__bar{
-            width: 60px;
-            background: $light-green;
-            position: relative;
-            margin: 0 10px;
-          }
-          .bar-chart__value{
-            @extend %roboto;
-            position: absolute;
-            color: white;
-            font-size: 10px;
-            top: 2px;
-            margin: 0;
-            z-index: 2;
-            width: 100%;
-            text-align: center;
-          }
-          .bar-chart__x{
-            @extend %roboto;
-            width: 100%;
-            position: absolute;
-            bottom: -20px;
-            color: white;
-            font-weight: bold;
-            margin: 0;
-          }
-        }
-      }
     }
   }
 }

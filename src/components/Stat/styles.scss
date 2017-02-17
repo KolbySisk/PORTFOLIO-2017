@@ -9,8 +9,8 @@
   color: white;
   background: rgba(0, 0, 0, .7);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
-  @media (max-width: $tablet-breakpoint) {
-    flex: 0 0 60%;
+  @media (max-width: $mobile-breakpoint) {
+    flex: 0 0 40%;
     margin: inherit 0;
   }
   a{

@@ -1,0 +1,22 @@
+@import "../../shared-styles.scss";
+
+.header-stat{
+  text-align: center;
+  @media (max-width: $tablet-breakpoint) {
+    flex: 0 0 50%;
+  }
+  .header-stat__value{
+    @extend %roboto;
+    margin: 0;
+    color: $light-green;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .header-stat__title{
+    @extend %roboto;
+    margin: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: lighter;
+  }
+}

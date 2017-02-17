@@ -56,7 +56,7 @@ class StickyIcky extends Component{
     let elementIsTechnologyList = stickyIckyContext.ref.firstChild.className === 'technology-list__list'
     if(elementIsStopped || elementIsTechnologyList) return
 
-    if(stickyIckyContext.ref.firstChild.className == 'sticky__title'){
+    if(stickyIckyContext.ref.firstChild.className === 'sticky__title'){
       let technologyList = document.getElementsByClassName("technology-list__list ")
       technologyList[0].style.marginTop = stickyIckyHeight * -1 + 'px'
     }
@@ -70,7 +70,7 @@ class StickyIcky extends Component{
     let elementIsTechnologyList = stickyIckyContext.ref.firstChild.className === 'technology-list__list'
     if(!elementIsStopped || elementIsTechnologyList) return
 
-    if(stickyIckyContext.ref.firstChild.className == 'sticky__title'){
+    if(stickyIckyContext.ref.firstChild.className === 'sticky__title'){
       let technologyList = document.getElementsByClassName("technology-list__list ")
       technologyList[0].style.marginTop = 0
     }
@@ -80,7 +80,7 @@ class StickyIcky extends Component{
   }
 
   handleScroll = (event) => {
-    let stickyIckyContext = this.props.stickyIckyReducer.stickyIckies.find(si => si.id == this.state.id)
+    let stickyIckyContext = this.props.stickyIckyReducer.stickyIckies.find(si => si.id === this.state.id)
     // used to determine when to stickor unstick
     let winScrollY = window.scrollY
     let stickyIckyY = stickyIckyContext.ref.getBoundingClientRect().top
@@ -108,7 +108,7 @@ class StickyIcky extends Component{
   }
 
   checkIfStickIckyIsStuck = () => {
-    let stickyIcky = this.props.stickyIckyReducer.stickyIckies.find(si => si.id == this.state.id)
+    let stickyIcky = this.props.stickyIckyReducer.stickyIckies.find(si => si.id === this.state.id)
     return stickyIcky ? stickyIcky.stuck: false
   }
 
