@@ -62,7 +62,9 @@ class ContactForm extends Component {
       title: 'miles driven'
     }],
 
-    snowboardData: [{  
+    snowboardData: [],
+
+    snowboardRawData: [{  
       Date:"01/28/2017",
       ResortName: "Keystone",
       VerticalFeet:17413,
@@ -109,6 +111,7 @@ class ContactForm extends Component {
   componentDidMount(){
     this.prepStats('coding')
     this.prepStats('snowboarding')
+    this.prepSnowboardData()
     window.addEventListener('scroll', this.watchStatsScreenPosition)
   }
 
@@ -116,26 +119,27 @@ class ContactForm extends Component {
     if(this.refs.stats.getBoundingClientRect().top < 100){
       this.initStatAnimation('coding')
       this.initStatAnimation('snowboarding')
-
+      this.initGraphAnimation()
       window.removeEventListener('scroll', this.watchStatsScreenPosition)
     }
   }
 
-  getSnowboardData(){
-    let data = []
-    let mostVerticalFeet = Math.max.apply(Math,this.state.snowboardData.map(o => o.TotalVerticalFeet))
+  prepSnowboardData(){
+    var clonedData = JSON.parse(JSON.stringify(this.state.snowboardData))
+    let mostVerticalFeet = Math.max.apply(Math,this.state.snowboardRawData.map(o => o.TotalVerticalFeet))
 
-    this.state.snowboardData.forEach(sd => {
+    this.state.snowboardRawData.forEach(sd => {
       let dateArray = sd.Date.split('/')
-      data.push({
+      clonedData.push({
         date: dateArray[0] + '/' + dateArray[1],
         resortName: sd.ResortName,
         value: sd.TotalVerticalFeet.toLocaleString(),
-        percent: (sd.TotalVerticalFeet / mostVerticalFeet * 100) + '%'
+        displayPercent: 7 + '%',
+        percent: (sd.TotalVerticalFeet / mostVerticalFeet * 100)
       })
     })
 
-    return data;
+    this.setState({ snowboardData: clonedData })
   }
 
   getIncrementedValue(displayValue, endValue){
@@ -203,17 +207,32 @@ class ContactForm extends Component {
 
         stat.displayValue = newValue
         type === 'coding' ? this.setState({ codingStats: clonedStats }) : this.setState({ snowboardStats: clonedStats })
-      }, 300)
+      }, 100)
     })
   }
 
   initGraphAnimation(){
+    var clonedData = JSON.parse(JSON.stringify(this.state.snowboardData))
+    clonedData.forEach(data => {
+      let endPercent = parseInt(data.percent.toString().replace('%', ''))
+      let animationInterval = setInterval(() => {
+        let displayPercent = parseInt(data.displayPercent.toString().replace('%', ''))
 
+        if(displayPercent == endPercent){
+          clearInterval(animationInterval)
+          return
+        }
+
+        displayPercent ++
+        data.displayPercent = displayPercent + '%'
+
+        this.setState({ snowboardData: clonedData })
+      }, 10)
+    })
   }
 
   render() {
-    let snowboardData = this.getSnowboardData()
-    let { codingStats, snowboardStats } = this.state
+    let { codingStats, snowboardStats, snowboardData } = this.state
     return (
       <section className="stats" ref="stats">
         <h1>coding and snowboarding</h1>
