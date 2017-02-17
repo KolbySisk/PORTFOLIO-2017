@@ -116,8 +116,12 @@ class ContactForm extends Component {
   }
 
   watchStatsScreenPosition = (event) => {
-    if(this.refs.stats.getBoundingClientRect().top < 100){
+
+    if(this.refs.codingContainer.getBoundingClientRect().top < 200){
       this.initStatAnimation('coding')
+    }
+
+    if(this.refs.snowboardingContainer.getBoundingClientRect().top < 200){
       this.initStatAnimation('snowboarding')
       this.initGraphAnimation()
       window.removeEventListener('scroll', this.watchStatsScreenPosition)
@@ -238,13 +242,13 @@ class ContactForm extends Component {
         <h1>coding and snowboarding</h1>
         <h2>just some random stats</h2>
         <div className="flex">
-          <div className="stats-coding">
+          <div className="stats-coding" ref="codingContainer">
             {codingStats.map((stat, i) =>
               <Stat key={ i } src={ stat.src } href={ stat.href } value={ stat.displayValue } title={ stat.title } />
             )}
           </div>
 
-          <div className="stats-snowboarding">
+          <div className="stats-snowboarding" ref="snowboardingContainer">
             <header className="header-stats">
               {snowboardStats.map((stat, i) =>
                 <HeaderStat key={ i } value={ stat.displayValue } title={ stat.title } />
