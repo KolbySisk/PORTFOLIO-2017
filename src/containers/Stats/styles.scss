@@ -33,6 +33,7 @@
     border-right: solid 10px white;
     box-sizing: border-box;
     @media (max-width: $mobile-breakpoint) {
+      border-right: none;
       flex: 0 0 100%;
     }
   }
