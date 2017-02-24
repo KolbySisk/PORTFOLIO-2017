@@ -58,3 +58,24 @@ export function prepStats(stats){
   stats.snowboardData = prepSnowboardData(stats.snowboardStats)
   stats.snowboardStats = prepSnowboardingStats(stats.snowboardStats)
 }
+
+
+export function getIncrementedValue(displayValue, endValue){
+  let endValueCopy = endValue.toString().replace(/,/g, '')
+  let displayValueCopy = displayValue.toString().replace(/,/g, '')
+
+  if(displayValueCopy === endValueCopy) return false
+  
+  let endValueArray = endValueCopy.split('')
+  let displayValueArray = displayValueCopy.split('')
+
+  while(displayValueArray.length !== endValueArray.length) displayValueArray.push("0")
+
+  displayValueArray.forEach((val, i) => {
+    if(val >= endValueArray[i]) return
+    val ++
+    displayValueArray[i] = val.toString()
+  })
+
+  return parseInt(displayValueArray.join(''), 10).toLocaleString()
+}

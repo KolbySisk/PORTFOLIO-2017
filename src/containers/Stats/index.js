@@ -4,6 +4,7 @@ import Stat from '../../components/Stat'
 import HeaderStat from '../../components/HeaderStat'
 import BarGraph from '../../components/BarGraph'
 import { loadStats } from './actions'
+import { getIncrementedValue } from './utility'
 import './styles.scss'
 
 class Stats extends Component {
@@ -33,26 +34,6 @@ class Stats extends Component {
     } 
   }
 
-  getIncrementedValue(displayValue, endValue){
-    let endValueCopy = endValue.toString().replace(/,/g, '')
-    let displayValueCopy = displayValue.toString().replace(/,/g, '')
-
-    if(displayValueCopy === endValueCopy) return false
-    
-    let endValueArray = endValueCopy.split('')
-    let displayValueArray = displayValueCopy.split('')
-
-    while(displayValueArray.length !== endValueArray.length) displayValueArray.push("0")
-
-    displayValueArray.forEach((val, i) => {
-      if(val >= endValueArray[i]) return
-      val ++
-      displayValueArray[i] = val.toString()
-    })
-
-    return parseInt(displayValueArray.join(''), 10).toLocaleString()
-  }
-
   initStatAnimation(type){
     var clonedStats = type === 'coding' ? JSON.parse(JSON.stringify(this.state.codingStats)) : JSON.parse(JSON.stringify(this.state.snowboardStats))
     clonedStats.forEach(stat => {
@@ -62,7 +43,7 @@ class Stats extends Component {
       if(isNaN(stat.value)) return
 
       let animationInterval = setInterval(() => {
-        const newValue = this.getIncrementedValue(stat.displayValue, stat.value)
+        const newValue = getIncrementedValue(stat.displayValue, stat.value)
         
         if(newValue === false){
           clearInterval(animationInterval)
