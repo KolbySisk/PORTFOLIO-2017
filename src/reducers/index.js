@@ -5,6 +5,7 @@ import { StickyIckyReducer } from '../containers/StickyIcky/reducer'
 import { HomeReducer } from '../containers/Home/reducer'
 import { NotificationReducer } from '../containers/Notification/reducer'
 import { ContactFormReducer } from '../containers/ContactForm/reducer'
+import { StatsReducer } from '../containers/Stats/reducer'
 
 const reducers = combineReducers({
   technologyListReducer: TechnologyListReducer,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   stickyIckyReducer: StickyIckyReducer,
   homeReducer: HomeReducer,
   notificationReducer: NotificationReducer,
-  contactFormReducer: ContactFormReducer
+  contactFormReducer: ContactFormReducer,
+  statsReducer: StatsReducer
 })
 
 export default reducers

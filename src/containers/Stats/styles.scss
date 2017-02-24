@@ -30,7 +30,7 @@
     align-items: center;
     position: relative;
     padding: 30px 0;
-    border-right: solid 10px white;
+    border-right: solid 10px $white;
     box-sizing: border-box;
     @media (max-width: $mobile-breakpoint) {
       border-right: none;
@@ -46,10 +46,10 @@
     overflow: auto;
     position: relative;
     min-height: 470px;
-    border-left: solid 10px white;
+    border-left: solid 10px $white;
     box-sizing: border-box;
     @media (max-width: $mobile-breakpoint) {
-      border-top: $vertical-spacing white solid;
+      border-top: $vertical-spacing $white solid;
       border-left: none;
       flex: 0 0 100%;
     }

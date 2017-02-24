@@ -8,7 +8,7 @@ const rootNode = document.getElementById('root')
 
 ReactDOM.render(<App />, rootNode)
 
-if (module.hot) {
+if(module.hot){
   module.hot.accept('./app', () => {
     const NextApp = require('./app').default
     ReactDOM.render(<NextApp />, rootNode)

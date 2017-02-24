@@ -8,6 +8,10 @@ export const getStuff = () => {
   return axios.get('stuff')
 }
 
+export const getStats = () => {
+  return axios.get('stats')
+}
+
 export const postContactForm = (data) => {
   var params = new URLSearchParams();
   params.append('name', data.name);

@@ -3,152 +3,37 @@ import { connect } from 'react-redux'
 import Stat from '../../components/Stat'
 import HeaderStat from '../../components/HeaderStat'
 import BarGraph from '../../components/BarGraph'
+import { loadStats } from './actions'
 import './styles.scss'
 
-class ContactForm extends Component {
-  state = {
-    codingStats: [{
-      href: "https://github.com/KolbySisk",
-      src: "images/icon-github.png",
-      alt: "github logo",
-      displayValue: 0,
-      value: "12",
-      title: "repositories"
-    },{
-      href: "https://www.linkedin.com/in/kolbysisk",
-      src: "images/icon-linkedin.png",
-      alt: "linked-in logo",
-      displayValue: 0,
-      value: "152",
-      title: "skill endorsements"
-    },{
-      href: "http://stackoverflow.com/users/1933563/kolby",
-      src: "images/icon-stackoverflow.png",
-      alt: "stackoverflow logo",
-      displayValue: 0,
-      value: "192,120",
-      title: "people reached"
-    },{
-      href: "http://stackoverflow.com/users/1933563/kolby",
-      src: "images/icon-stackoverflow.png",
-      alt: "stackoverflow logo",
-      displayValue: 0,
-      value: "1,530",
-      title: "reputation"
-    },{
-      href: "http://stackoverflow.com/users/1933563/kolby",
-      src: "images/icon-stackoverflow.png",
-      alt: "stackoverflow logo",
-      displayValue: 0,
-      value: "136",
-      title: "answers"
-    }],
-
-    snowboardStats: [{
-      displayValue: 0,
-      value: '120,667',
-      title: 'vertical feet'
-    },{
-      displayValue: 0,
-      value: 'keystone',
-      title: 'most visited'
-    },{
-      displayValue: 0,
-      value: '9',
-      title: 'trips to keystone'
-    },{
-      displayValue: 0,
-      value: '810',
-      title: 'miles driven'
-    }],
-
-    snowboardData: [],
-
-    snowboardRawData: [{  
-      Date:"01/28/2017",
-      ResortName: "Keystone",
-      VerticalFeet:17413,
-      TotalVerticalFeet: 17413
-    },
-    {  
-      Date:"01/21/2017",
-      ResortName: "Keystone",
-      VerticalFeet:20773,
-      TotalVerticalFeet: 20773
-    },
-    {  
-      Date:"12/30/2016",
-      ResortName: "Keystone",
-      VerticalFeet:17967,
-      TotalVerticalFeet: 17967
-    },
-    {  
-      Date:"12/29/2016",
-      ResortName: "Keystone",
-      VerticalFeet:9722,
-      TotalVerticalFeet: 9722
-    },
-    {  
-      Date:"12/19/2016",
-      ResortName: "Keystone",
-      VerticalFeet:5263,
-      TotalVerticalFeet: 5263
-    },
-    {  
-      Date:"12/11/2016",
-      ResortName: "Keystone",
-      VerticalFeet:6508,
-      TotalVerticalFeet: 6508
-    },
-    {  
-      Date:"12/10/2016",
-      ResortName: "Keystone",
-      VerticalFeet:10471,
-      TotalVerticalFeet: 10471
-    }]
-  }
+class Stats extends Component {
+  state = {}
 
   componentDidMount(){
-    this.prepStats('coding')
-    this.prepStats('snowboarding')
-    this.prepSnowboardData()
+    this.props.loadStats(this)
+  }
+
+  initStats(stats){
+    this.setState(stats)
     window.addEventListener('scroll', this.watchStatsScreenPosition)
   }
 
   watchStatsScreenPosition = (event) => {
-
-    if(this.refs.codingContainer.getBoundingClientRect().top < 200){
-      this.initStatAnimation('coding')
+    if(this.refs.codingContainer){
+      if(this.refs.codingContainer.getBoundingClientRect().top < 250 && this.refs.codingContainer.getBoundingClientRect().top > 100){
+        this.initStatAnimation('coding')
+      }
     }
-
-    if(this.refs.snowboardingContainer.getBoundingClientRect().top < 200){
-      this.initStatAnimation('snowboarding')
-      this.initGraphAnimation()
-      window.removeEventListener('scroll', this.watchStatsScreenPosition)
-    }
-  }
-
-  prepSnowboardData(){
-    var clonedData = JSON.parse(JSON.stringify(this.state.snowboardData))
-    let mostVerticalFeet = Math.max.apply(Math,this.state.snowboardRawData.map(o => o.TotalVerticalFeet))
-
-    this.state.snowboardRawData.forEach(sd => {
-      let dateArray = sd.Date.split('/')
-      clonedData.push({
-        date: dateArray[0] + '/' + dateArray[1],
-        resortName: sd.ResortName,
-        value: sd.TotalVerticalFeet.toLocaleString(),
-        displayPercent: 7 + '%',
-        percent: (sd.TotalVerticalFeet / mostVerticalFeet * 100)
-      })
-    })
-
-    this.setState({ snowboardData: clonedData })
+    if(this.refs.snowboardingContainer){
+      if(this.refs.snowboardingContainer.getBoundingClientRect().top < 250 && this.refs.snowboardingContainer.getBoundingClientRect().top > 100){
+        this.initStatAnimation('snowboarding')
+        this.initGraphAnimation()
+        window.removeEventListener('scroll', this.watchStatsScreenPosition)
+      }
+    } 
   }
 
   getIncrementedValue(displayValue, endValue){
-    if(displayValue === undefined || endValue === undefined) return false
-
     let endValueCopy = endValue.toString().replace(/,/g, '')
     let displayValueCopy = displayValue.toString().replace(/,/g, '')
 
@@ -165,41 +50,12 @@ class ContactForm extends Component {
       displayValueArray[i] = val.toString()
     })
 
-    let newValue = parseInt(displayValueArray.join('')).toLocaleString()
-    return newValue
-  }
-
-  prepStats(type){
-    var clonedStats = type === 'coding' ? JSON.parse(JSON.stringify(this.state.codingStats)) : JSON.parse(JSON.stringify(this.state.snowboardStats))
-    clonedStats.forEach(stat => {
-      if(stat.displayValue === undefined) return
-
-      stat.value = stat.value.toString().replace(/,/g, '')
-      stat.displayValue = stat.displayValue.toString().replace(/,/g, '')
-
-      if(isNaN(stat.value)){
-        stat.displayValue = stat.value
-        type === 'coding' ? this.setState({ codingStats: clonedStats }) : this.setState({ snowboardStats: clonedStats })
-        return
-      }
-
-      if(stat.displayValue === undefined || stat.value === undefined) return false
-
-      let endValueArray = stat.value.toString().replace(/,/g, '').split('')
-      let displayValueArray = stat.displayValue.toString().replace(/,/g, '').split('')
-      while(displayValueArray.length !== endValueArray.length) displayValueArray.push("0")
-
-      let newValue = displayValueArray.join('')
-      stat.displayValue = newValue
-      type === 'coding' ? this.setState({ codingStats: clonedStats }) : this.setState({ snowboardStats: clonedStats })
-    })
+    return parseInt(displayValueArray.join(''), 10).toLocaleString()
   }
 
   initStatAnimation(type){
     var clonedStats = type === 'coding' ? JSON.parse(JSON.stringify(this.state.codingStats)) : JSON.parse(JSON.stringify(this.state.snowboardStats))
     clonedStats.forEach(stat => {
-      if(stat.displayValue === undefined) return
-
       stat.value = stat.value.toString().replace(/,/g, '')
       stat.displayValue = stat.displayValue.toString().replace(/,/g, '')
 
@@ -214,6 +70,7 @@ class ContactForm extends Component {
         }
 
         stat.displayValue = newValue
+
         type === 'coding' ? this.setState({ codingStats: clonedStats }) : this.setState({ snowboardStats: clonedStats })
       }, 100)
     })
@@ -221,12 +78,13 @@ class ContactForm extends Component {
 
   initGraphAnimation(){
     var clonedData = JSON.parse(JSON.stringify(this.state.snowboardData))
-    clonedData.forEach(data => {
-      let endPercent = parseInt(data.percent.toString().replace('%', ''))
-      let animationInterval = setInterval(() => {
-        let displayPercent = parseInt(data.displayPercent.toString().replace('%', ''))
 
-        if(displayPercent == endPercent){
+    clonedData.forEach(data => {
+      let endPercent = parseInt(data.percent.toString().replace('%', ''), 10)
+      let animationInterval = setInterval(() => {
+        let displayPercent = parseInt(data.displayPercent.toString().replace('%', ''), 10)
+
+        if(displayPercent === endPercent){
           clearInterval(animationInterval)
           return
         }
@@ -247,18 +105,18 @@ class ContactForm extends Component {
         <h2>just some random stats</h2>
         <div className="flex">
           <div className="stats-coding" ref="codingContainer">
-            {codingStats.map((stat, i) =>
+            { codingStats ? codingStats.map((stat, i) =>
               <Stat key={ i } src={ stat.src } href={ stat.href } value={ stat.displayValue } title={ stat.title } />
-            )}
+            ) : '' }
           </div>
 
           <div className="stats-snowboarding" ref="snowboardingContainer">
             <header className="header-stats">
-              {snowboardStats.map((stat, i) =>
+              { snowboardStats ? snowboardStats.map((stat, i) =>
                 <HeaderStat key={ i } value={ stat.displayValue } title={ stat.title } />
-              )}
+              ) : '' }
             </header>
-            <BarGraph snowboardData={ snowboardData }/>
+            { snowboardData ? <BarGraph snowboardData={ snowboardData }/> : '' }
           </div>
         </div>
       </section>
@@ -267,7 +125,7 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  //statasReducer: state.statasReducer
+  stats: state.statsReducer.stats
 })
 
-export default connect(mapStateToProps)(ContactForm)
+export default connect(mapStateToProps, { loadStats })(Stats)

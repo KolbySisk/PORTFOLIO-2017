@@ -9,14 +9,14 @@ class Stuff extends Component{
   render(){
     return(
       <div className="stuff">
-        { this.props.stuffReducer.stuff.map(stuff => <StuffCard key={stuff.id} stuff={stuff} /> )}
+        { this.props.stuff.map(stuff => <StuffCard key={stuff.id} stuff={stuff} /> )}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  stuffReducer: state.stuffReducer
+  stuff: state.stuffReducer.stuff
 })
 
 export default connect(mapStateToProps,
