@@ -6,27 +6,31 @@ import './styles.scss'
 class Header extends Component {
   componentDidMount() {
     let container
-
     let camera, scene, renderer
-
     let mesh, lightMesh, geometry
     let spheres = []
-
     let directionalLight, pointLight
-
     let mouseX = 0, mouseY = 0
-
-    let windowHalfX = window.innerWidth / 2
-    let windowHalfY = window.innerHeight / 2
-
     let direction = -1
-
-    let banner = document.querySelector('.site-banner')
+    let banner = this.refs.banner
+    let modes = {
+      normal: 1,
+      second: 2
+    }
+    let mode = modes.normal
 
     document.addEventListener('mousemove', onDocumentMouseMove, false)
+    window.addEventListener('resize', onWindowResize, false)
+    banner.addEventListener("click", toggleMode);
 
-    init()
-    animate()
+    setTimeout(() => {
+      init()
+      animate()
+    })
+
+    function toggleMode(){
+      mode === Object.keys(modes).length ? mode = 1 : mode ++
+    }
 
     function init() {
       let THREE = THREELib()
@@ -34,9 +38,7 @@ class Header extends Component {
       container = document.createElement('div')
       banner.insertBefore(container, banner.firstChild)
 
-      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 100000)
-      camera.position.z = 3200
-
+      camera = new THREE.PerspectiveCamera(60, banner.offsetWidth / banner.offsetHeight, 1, 10000)
       scene = new THREE.Scene()
 
       let geometry = new THREE.SphereBufferGeometry(11, 32, 16)
@@ -54,7 +56,7 @@ class Header extends Component {
         mesh.position.x = Math.random() * 10000 - 5000
         mesh.position.y = Math.random() * 10000 - 5000
         mesh.position.z = Math.random() * 10000 - 5000
-        mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1
+        mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3
 
         scene.add(mesh)
         spheres.push(mesh)
@@ -62,16 +64,14 @@ class Header extends Component {
 
       renderer = new THREE.WebGLRenderer({ alpha: true })
       renderer.setPixelRatio(window.devicePixelRatio)
-      renderer.setSize(window.innerWidth, 500)
+      renderer.setSize(banner.offsetWidth, banner.offsetHeight)
       container.appendChild(renderer.domElement)
-
-      window.addEventListener('resize', onWindowResize, false)
     }
 
     function onWindowResize() {
-      camera.aspect = window.innerWidth / 500
+      camera.aspect = banner.offsetWidth / banner.offsetHeight
       camera.updateProjectionMatrix()
-      renderer.setSize(window.innerWidth, 500)
+      renderer.setSize(banner.offsetWidth, banner.offsetHeight)
     }
 
     function onDocumentMouseMove(event) {
@@ -84,19 +84,47 @@ class Header extends Component {
       render()
     }
 
-    function render() {
+    function moveSpheres(){
       let timer = 0.0001 * Date.now()
-      let speed = 2
-      let x = (mouseX / (banner.offsetWidth/2) - 1) * 1000
-      let y = (mouseY / (banner.offsetHeight/2) - 1) * 1000
+      let speed = 5
 
-      spheres.forEach((sphere, i) => {
-        sphere.position.x = (banner.offsetWidth/2) * Math.cos(timer * speed * direction + i)
-        sphere.position.y = (banner.offsetHeight * 5) * Math.sin(timer * speed * direction + i)
-      })
+      if(mode === modes.normal){
+        spheres.forEach((sphere, i) => {
+          sphere.position.x = banner.offsetWidth * Math.cos(timer * speed * direction + i)
+          sphere.position.y = banner.offsetHeight * Math.sin(timer * speed * direction + i)
+        })
+      }
 
-      camera.position.x += (x - camera.position.x) * .05
-      camera.position.y += (y - camera.position.y) * .05
+      if(mode === modes.second){
+        speed = 10
+        spheres.forEach((sphere, i) => {
+          function moveTowardsMiddle(){
+            sphere.position.y < 300 ? sphere.position.y += speed : sphere.position.y -= speed
+          }
+
+          if(sphere.position.y < 290 || sphere.position.y > 310) moveTowardsMiddle()
+        })
+      }
+
+
+      if(mode === modes.third){
+        spheres.forEach((sphere, i) => {
+          function moveTowardsMouse(){
+          }
+
+          moveTowardsMouse()
+        })
+      }
+    }
+
+    function render() {
+      let x = (mouseX / banner.offsetWidth) * 100
+      let y = (mouseY / banner.offsetHeight) * 100
+
+      moveSpheres()
+
+      camera.position.x += (mouseX + 1000 - camera.position.x) * .9 + 30
+      camera.position.y += (mouseY - 50 - camera.position.y) * .9 + 30
 
       camera.lookAt(scene.position)
       renderer.render(scene, camera)
@@ -106,8 +134,8 @@ class Header extends Component {
   render(){
     return(
       <header className="site-header">
-        <div className="site-banner">
-          <img src={'/images/logo.png'} alt="my logo - kolby sisk :)#" className="site-banner__logo" draggable="false"/>
+        <div className="site-banner" ref="banner">
+          <img src={'/images/logo.png'} alt="my logo - kolby sisk :)#" className="site-banner__logo" draggable="false" ref="logo"/>
           <Parallaxer>
             <picture>
               <source srcSet="/images/home-banner.jpg" media="(min-width: 1280px)" />
