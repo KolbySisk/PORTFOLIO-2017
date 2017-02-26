@@ -21,6 +21,8 @@ class Header extends Component {
 
     let direction = -1
 
+    let banner = document.querySelector('.site-banner')
+
     document.addEventListener('mousemove', onDocumentMouseMove, false)
 
     init()
@@ -28,8 +30,7 @@ class Header extends Component {
 
     function init() {
       let THREE = THREELib()
-
-      let banner = document.querySelector('.site-banner')
+      
       container = document.createElement('div')
       banner.insertBefore(container, banner.firstChild)
 
@@ -47,7 +48,7 @@ class Header extends Component {
 
       let material = new THREE.MeshBasicMaterial({ envMap: textureCube, refractionRatio: 0.94, metalness: 1.0 })
 
-      for (let i = 0; i < 100; i ++) {
+      for (let i = 0; i < 200; i ++) {
         let mesh = new THREE.Mesh(geometry, material)
 
         mesh.position.x = Math.random() * 10000 - 5000
@@ -86,16 +87,16 @@ class Header extends Component {
     function render() {
       let timer = 0.0001 * Date.now()
       let speed = 2
-      let x = mouseX/screen.width*1000
-      let y = mouseY/screen.height*1000
+      let x = (mouseX / (banner.offsetWidth/2) - 1) * 1000
+      let y = (mouseY / (banner.offsetHeight/2) - 1) * 1000
 
       spheres.forEach((sphere, i) => {
-        sphere.position.x = (screen.width * 1.5 - x) * Math.cos(timer * speed * direction + i)
-        sphere.position.y = (2000 - y) * Math.sin(timer * speed * direction + i)
+        sphere.position.x = (banner.offsetWidth/2) * Math.cos(timer * speed * direction + i)
+        sphere.position.y = (banner.offsetHeight * 5) * Math.sin(timer * speed * direction + i)
       })
 
-      camera.position.x += (mouseX - camera.position.x) * .05
-      camera.position.y += (-mouseY - camera.position.y) * .05
+      camera.position.x += (x - camera.position.x) * .05
+      camera.position.y += (y - camera.position.y) * .05
 
       camera.lookAt(scene.position)
       renderer.render(scene, camera)
