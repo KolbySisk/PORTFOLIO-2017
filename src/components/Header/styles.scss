@@ -5,6 +5,10 @@
   max-height: 500px;
   overflow: hidden;
   min-height: 150px;
+  canvas{
+    position: absolute;
+    z-index: 10;
+  }
   .site-banner__image{
     width: 100%;
     @media (max-width: 400px) {
