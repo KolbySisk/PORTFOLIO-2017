@@ -5,12 +5,9 @@
   max-height: 500px;
   overflow: hidden;
   min-height: 150px;
-  canvas{
-    position: absolute;
-    z-index: 10;
-  }
   img{
     vertical-align: middle;
+    user-select: none;
   }
   .site-banner__image{
     width: 100%;
