@@ -27,7 +27,10 @@ class StickyIcky extends Component{
 
     let id = [...this.props.stickyIckyReducer.stickyIckies].pop().id
     this.setState({ id: id })
-    this.setState({ context: this.props.stickyIckyReducer.stickyIckies.find(si => si.id === id)})
+    this.setState({ context: this.props.stickyIckyReducer.stickyIckies.find(si => si.id === id)}, () => {
+        this.handleScroll()
+        this.handleResize()
+    })
   }
 
   componentWillUnmount(){

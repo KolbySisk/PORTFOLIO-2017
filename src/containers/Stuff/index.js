@@ -6,17 +6,33 @@ import { loadStuff } from './actions'
 import './styles.scss'
 
 class Stuff extends Component{
+  filterStuff(stuff){
+    if(this.props.selectedTechnologyId === null) return stuff
+
+    let dictionary = {
+      1: 'angular',
+      2: 'react',
+      3: 'cordovoa',
+      4: 'c#',
+      5: 'php'
+    }
+
+    let selectedTechnology = dictionary[this.props.selectedTechnologyId]
+    return stuff.filter(stuff => stuff.categories.includes(selectedTechnology))
+  }
   render(){
+    const filteredStuff = this.filterStuff(this.props.stuff)
     return(
       <div className="stuff">
-        { this.props.stuff.map(stuff => <StuffCard key={stuff.id} stuff={stuff} /> )}
+        { filteredStuff.map(stuff => <StuffCard key={stuff.id} stuff={stuff} /> )}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  stuff: state.stuffReducer.stuff
+  stuff: state.stuffReducer.stuff,
+  selectedTechnologyId: state.stuffReducer.selectedTechnologyId
 })
 
 export default connect(mapStateToProps,

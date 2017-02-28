@@ -8,7 +8,7 @@ import './styles.scss'
 
 class TechnologyList extends Component{  
   onTechnologyClick = (technology) => {
-    this.props.technologySelected(technology.id)
+    this.props.technologySelected({ id: technology.id, name: technology.name })
 
     let anchor = document.querySelector('.stuff')
     let options = { speed: 800, offset: 130 }
@@ -24,7 +24,7 @@ class TechnologyList extends Component{
             {this.props.technologyListReducer.technologies.map(technology =>
               <TechnologyCard
                 key={technology.id}
-                active={this.props.technologyListReducer.selectedTechnology === technology.id}
+                active={this.props.technologyListReducer.selectedTechnology ? this.props.technologyListReducer.selectedTechnology.id === technology.id : ''}
                 technology={technology}
                 onClick={() => this.onTechnologyClick(technology)}
               />

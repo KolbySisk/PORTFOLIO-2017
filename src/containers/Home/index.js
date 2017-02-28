@@ -11,7 +11,7 @@ import './styles.scss'
 
 class Home extends Component {
 	render(){
-		const { technologies } = this.props
+		const { technologies, selectedTechnologyName } = this.props
 		return(
 			<div className="home-container">
 				<section className="home__section-1">
@@ -29,7 +29,7 @@ class Home extends Component {
 				<section className="home__section-2">
 					<div className="stuff-container">
 						<div className="container">
-				      <StickyTitle title="Stuff"/>
+				      <StickyTitle title={ selectedTechnologyName ? selectedTechnologyName + '\xa0\xa0' + 'Stuff' : 'Stuff' }/>
 							<Stuff />
 						</div>
 					</div>
@@ -51,7 +51,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  homeReducer: state.homeReducer
+  selectedTechnologyName: state.homeReducer.selectedTechnologyName
 })
 
 export default connect(mapStateToProps)(Home)

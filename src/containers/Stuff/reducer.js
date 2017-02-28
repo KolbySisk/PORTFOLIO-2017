@@ -1,7 +1,8 @@
 import { STUFF_RECEIVED } from './constants'
 
 const initialState = {
-	stuff: []
+	stuff: [],
+  selectedTechnologyId: null
 }
 
 export const StuffReducer = (state = initialState, action) => {
@@ -11,6 +12,9 @@ export const StuffReducer = (state = initialState, action) => {
       var newState = Object.assign({}, state)
       newState.stuff = action.stuff
       return newState
+
+    case 'TECHNOLOGY_SELECTED':
+      return { ...state, selectedTechnologyId: action.payload.id }
 
 		default:
 			return state
