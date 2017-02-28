@@ -5,7 +5,7 @@
   flex-direction: row;
   align-items: flex-start;
   .image-and-form__image{
-    flex: 33%;
+    flex: 0 0 33%;
     width: 0;
     position: relative;
     @media (max-width: $mobile-breakpoint) {
@@ -36,6 +36,6 @@
     }
   }
   .image-and-form__form{
-    flex: 67%;
+    flex: 0 0 67%;
   }
 }

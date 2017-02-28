@@ -74,6 +74,7 @@ input[type="text"], input[type="email"]{
   padding: 0 15px;
   margin-bottom: 20px;
   box-sizing: border-box;
+  box-shadow: none;
 }
 textarea{
   height: 160px;
@@ -85,6 +86,7 @@ textarea{
   box-sizing: border-box;
   margin-bottom: 20px;
   resize:vertical;
+  box-shadow: none;
 }
 button{
   @extend %roboto-slab;

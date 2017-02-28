@@ -1,7 +1,7 @@
 @import "../../shared-styles.scss";
 
 .technology-list{
-  flex: 67%;
+  flex: 0 0 67%;
   color: white;
   position: relative;
   z-index: 3;
@@ -17,8 +17,8 @@
     transition: margin-top 0.3s ease;
   }
   .stuck .technology-list__list{
-      width: inherit;
-      position: fixed;
-      top: 0;
-    }
+    width: inherit;
+    position: fixed;
+    top: 0;
+  }
 }
