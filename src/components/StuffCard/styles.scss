@@ -11,9 +11,6 @@
   &:nth-child(3n){
     margin-right: 0;
   }
-  &:nth-last-child(-n+3){
-    margin-bottom: 0;
-  }
   @media (max-width: $mobile-breakpoint) {
     flex: 0 0 100%;
     margin-bottom: 10px;
@@ -55,14 +52,29 @@
       color: $blue;
       padding-left: 10px;
     }
-    .link{
-      background: $green;
-      color: White;
+    .actions{
+      display: flex;
       text-align: center;
-      padding: 10px 0;
       transition: all 0.3s ease;
-      &:hover{
-        background: $light-green;
+      .link{
+        flex: 1 0 50%;
+        background: $green;
+        padding: 10px 0;
+        color: $white;
+        border-right: solid 1px #286b00;
+        &:hover{
+          background: $light-green;
+        }
+      }
+      .info{
+        flex: 1 0 50%;
+        background: $green;
+        padding: 10px 0;
+        color: $white;
+        border-left: solid 1px #318002;
+        &:hover{
+          background: $light-green;
+        }
       }
     }
   }

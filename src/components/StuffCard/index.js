@@ -9,7 +9,10 @@ const StuffCard = ({ stuff, active, onClick }) => (
     </div>
     <footer className="stuff-card__footer">
       <h2>{ stuff.name }</h2>
-      { stuff.link ? <a className="link" href={ stuff.link }><FontAwesome name='external-link' /></a> : '' }
+      <div className="actions">
+        { stuff.link ? <a className="link" href={ stuff.link }><FontAwesome name='external-link' /></a> : '' }
+        <a className="info"><FontAwesome name='info' /></a>
+      </div>
     </footer>
   </article>
 )
