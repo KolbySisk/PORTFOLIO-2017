@@ -42,12 +42,12 @@ class FloatingSpheres extends Component {
 
       let geometry = new THREE.SphereBufferGeometry(11, 32, 16)
       let textureCube = new THREE.CubeTextureLoader()
-        .setPath('banner-texture/')
+        .setPath('images/banner-texture/')
         .load([ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ])
 
       textureCube.mapping = THREE.CubeRefractionMapping
 
-      let material = new THREE.MeshBasicMaterial({ envMap: textureCube, refractionRatio: 0.94, metalness: 1.0, opacity: .7 })
+      let material = new THREE.MeshBasicMaterial({ envMap: textureCube, refractionRatio: 0.94, metalness: 1.0, opacity: 1 })
 
       for (let i = 0; i < 200; i ++) {
         let sphere = new THREE.Mesh(geometry, material)
