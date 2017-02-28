@@ -29,6 +29,10 @@
   img{
     width: 100%;
     vertical-align: middle;
+    filter: saturate(.5);
+    &:hover{
+      filter: saturate(1.2);
+    }
   }
   .stuff-card__footer{
     background: $white;
