@@ -47,7 +47,7 @@ class FloatingSpheres extends Component {
 
       textureCube.mapping = THREE.CubeRefractionMapping
 
-      let material = new THREE.MeshBasicMaterial({ envMap: textureCube, refractionRatio: 0.94, metalness: 1.0, opacity: 1 })
+      let material = new THREE.MeshBasicMaterial({ envMap: textureCube, refractionRatio: 0.94, metalness: 1.0, opacity: .7 })
 
       for (let i = 0; i < 200; i ++) {
         let sphere = new THREE.Mesh(geometry, material)
