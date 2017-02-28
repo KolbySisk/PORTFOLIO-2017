@@ -5,6 +5,10 @@ import { contactFormUpdated, contactFormSubmitted } from './actions'
 import './styles.scss'
 
 class ContactForm extends Component {
+  state = {
+    subHeader: Math.random() > .2 ? 'feel free to say hi' : 'make my phone vibrate'
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     this.props.contactFormSubmitted(this.props.contactFormReducer)
@@ -15,12 +19,13 @@ class ContactForm extends Component {
   }
 
   render() {
+    const { subHeader } = this.state
     const { name, email, message } = this.props.contactFormReducer
     return (
       <section className="contact-form">
         <header>
           <h3>Email me</h3>
-          <h4>Feel free to say hi</h4>
+          <h4>{ subHeader }</h4>
         </header>
         <Notification />
         <form onSubmit={this.handleSubmit.bind(this)}>

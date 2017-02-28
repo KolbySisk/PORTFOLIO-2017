@@ -92,8 +92,8 @@ class FloatingSpheres extends Component {
     let timerStop = false
 
     function moveSpheres(){
-      if(clickCount > 7) speedOfTime = .1
-      if(clickCount > 14) speedOfTime = .001
+      if(clickCount > 14) speedOfTime = .1
+      if(clickCount > 21) speedOfTime = .005
       if(!timerStop) timer += speedOfTime
 
       let speed = 20

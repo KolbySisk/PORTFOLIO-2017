@@ -8,7 +8,9 @@ import { getIncrementedValue } from './utility'
 import './styles.scss'
 
 class Stats extends Component {
-  state = {}
+  state = {
+    subHeader: Math.random() > .2 ? 'just some random stats' : 'look, pretty animations'
+  }
 
   componentDidMount(){
     this.props.loadStats(this)
@@ -79,11 +81,11 @@ class Stats extends Component {
   }
 
   render() {
-    let { codingStats, snowboardStats, snowboardData } = this.state
+    let { codingStats, snowboardStats, snowboardData, subHeader } = this.state
     return (
       <section className="stats" ref="stats">
         <h1>coding and snowboarding</h1>
-        <h2>just some random stats</h2>
+        <h2>{ subHeader }</h2>
         <div className="flex">
           <div className="stats-coding" ref="codingContainer">
             { codingStats ? codingStats.map((stat, i) =>

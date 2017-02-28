@@ -34,10 +34,6 @@ class Home extends Component {
 						</div>
 					</div>
 					<div className="stats-container">
-						{ /*<div className="container">
-							<StickyTitle title="Stats"/>
-						</div>
-						*/}
 						<Stats />
 					</div>
 					<div className="contact-me-container">

@@ -1,11 +1,9 @@
 @import "../../shared-styles.scss";
 
 .stuff-card{
-  flex: 0 0 calc(33.333333% - 3.33333333px);
-  overflow: hidden;
-  height: 200px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  flex: 0 0 calc(33.333333% - 6.666666666px);
+  margin-right: 10px;
+  margin-bottom: 10px;
   position: relative;
   cursor: pointer;
   &:nth-child(3n){
@@ -30,12 +28,9 @@
   }
   img{
     width: 100%;
+    vertical-align: middle;
   }
   .stuff-card__footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background: $white;
     h2{
       @extend %roboto-slab;
