@@ -14,19 +14,48 @@ import './styles.scss'
 class StickyIcky extends Component{
   state = {
     id: null,
+    context: null,
     originalTop: null,
     stickBuffer: 10, // max number of pixels that can be between the top of the sticky and the top of the page beforoe sticking
-    stopBuffer: 100 // max number of pixels that can be between the bottom of the sticky and the top of the container before hiding
+    stopBuffer: 100, // max number of pixels that can be between the bottom of the sticky and the top of the container before hiding
   }
 
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('resize', this.handleResize)
     this.props.stickyIckyAdded(this.refs.stickyIckyContainer)
-    this.setState({id: [...this.props.stickyIckyReducer.stickyIckies].pop().id})
+
+    let id = [...this.props.stickyIckyReducer.stickyIckies].pop().id
+    this.setState({ id: id })
+    this.setState({ context: this.props.stickyIckyReducer.stickyIckies.find(si => si.id === id)})
   }
 
   componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('resize', this.handleResize)
+  }
+
+  handleResize = (event) => {
+    if(!this.isStuck()) return
+
+    // specific case: set technology list width when resizing
+    const containerWidth = document.querySelector('.container').getBoundingClientRect().width
+    const newWidth = containerWidth * .67
+
+    if(this.state.context.ref.firstChild.className === 'technology-list__list'){
+      const newWidth = containerWidth * .67
+      this.state.context.ref.style.width = newWidth + "px"
+
+      let headerHeight = this.state.context.ref.querySelector("header").getBoundingClientRect().height
+      let stuffTitleHeight = document.getElementsByClassName("sticky__title ")[0].getBoundingClientRect().height
+
+      Array.from(this.state.context.ref.querySelectorAll('.technology-card__body')).map(x => x.style.height = stuffTitleHeight - headerHeight + "px")
+    }
+
+    else{
+      const newWidth = containerWidth * .33
+      this.state.context.ref.style.width = newWidth + "px"
+    }
   }
 
   stick(stickyIckyContext, winScrollY, stickyIckyY){
@@ -62,7 +91,7 @@ class StickyIcky extends Component{
     }
 
     this.props.stickyIckyStopped(this.state.id)
-    stickyIckyContext.ref.firstChild.style.marginTop = stickyIckyHeight * -1 + 'px'
+    stickyIckyContext.ref.firstChild.style.marginTop = stickyIckyHeight * -1 -10 + 'px'
   }
 
   unstop(stickyIckyContext){
@@ -80,34 +109,33 @@ class StickyIcky extends Component{
   }
 
   handleScroll = (event) => {
-    let stickyIckyContext = this.props.stickyIckyReducer.stickyIckies.find(si => si.id === this.state.id)
     // used to determine when to stickor unstick
     let winScrollY = window.scrollY
-    let stickyIckyY = stickyIckyContext.ref.getBoundingClientRect().top
+    let stickyIckyY = this.state.context.ref.getBoundingClientRect().top
     // used to determine when to stop or unstop
-    let containerBottom = stickyIckyContext.ref.closest(".container").getBoundingClientRect().bottom
-    let stickyIckyHeight = stickyIckyContext.ref.firstChild.getBoundingClientRect().height
+    let containerBottom = this.state.context.ref.closest(".container").getBoundingClientRect().bottom
+    let stickyIckyHeight = this.state.context.ref.firstChild.getBoundingClientRect().height
 
     // if we scroll within 20 pixes of the technology list we stickify it
     // check first to make sure it isn't already stuck so we don't stickify it every scroll
-    if(stickyIckyY < this.state.stickBuffer && !stickyIckyContext.stuck){
-      this.stick(stickyIckyContext, winScrollY, stickyIckyY)
+    if(stickyIckyY < this.state.stickBuffer && !this.state.context.stuck){
+      this.stick(this.state.context, winScrollY, stickyIckyY)
     }
     // unstick it if we scroll past the original y of the list
-    else if(winScrollY + this.state.stickBuffer < this.state.originalTop && stickyIckyContext.stuck){
-      this.unstick(stickyIckyContext)
+    else if(winScrollY + this.state.stickBuffer < this.state.originalTop && this.state.context.stuck){
+      this.unstick(this.state.context)
     }
     // stop at the bottom of the container
     else if(containerBottom - stickyIckyHeight - this.state.stopBuffer <= 0){
-      this.stop(stickyIckyContext, stickyIckyHeight)
+      this.stop(this.state.context, stickyIckyHeight)
     }
     // unstop when coming back into the container
     else{
-      this.unstop(stickyIckyContext, stickyIckyHeight)
+      this.unstop(this.state.context, stickyIckyHeight)
     }
   }
 
-  checkIfStickIckyIsStuck = () => {
+  isStuck = () => {
     let stickyIcky = this.props.stickyIckyReducer.stickyIckies.find(si => si.id === this.state.id)
     return stickyIcky ? stickyIcky.stuck: false
   }
@@ -122,7 +150,7 @@ class StickyIcky extends Component{
   }
 
   render(){
-    let isStuck = this.checkIfStickIckyIsStuck() ? 'stuck' : ''
+    let isStuck = this.isStuck() ? 'stuck' : ''
     return (
       <div className={"sticky-icky " + isStuck} ref="stickyIckyContainer">
         <Measure onMeasure={({width}) => this.setWidth(width)}>
