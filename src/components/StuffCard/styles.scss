@@ -57,7 +57,7 @@
       text-align: center;
       transition: all 0.3s ease;
       .link{
-        flex: 1 0 50%;
+        flex: 1 0 calc(50% - 1px);
         background: $green;
         padding: 10px 0;
         color: $white;
@@ -67,7 +67,7 @@
         }
       }
       .info{
-        flex: 1 0 50%;
+        flex: 1 0 calc(50% - 1px);
         background: $green;
         padding: 10px 0;
         color: $white;
