@@ -12,7 +12,7 @@ class Stuff extends Component{
     let dictionary = {
       1: 'angular',
       2: 'react',
-      3: 'cordovoa',
+      3: 'cordova',
       4: 'c#',
       5: 'php'
     }
