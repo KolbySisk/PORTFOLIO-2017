@@ -113,6 +113,7 @@ class StickyIcky extends Component{
   }
 
   handleScroll = (event) => {
+    if(window.innerWidth < 1280) return
     // used to determine when to stickor unstick
     let winScrollY = window.scrollY
     let stickyIckyY = this.state.context.ref.getBoundingClientRect().top
