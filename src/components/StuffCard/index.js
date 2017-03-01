@@ -12,6 +12,7 @@ const StuffCard = ({ stuff, active, onClick }) => (
       <div className="actions">
         { stuff.link ? <a className="link" href={ stuff.link }><FontAwesome name='external-link' /></a> : '' }
         <a className="info"><FontAwesome name='info' /></a>
+        { stuff.repoLink ? <a href={stuff.repoLink} className="repo"><FontAwesome name='github-alt' /></a> : '' }
       </div>
     </footer>
   </article>
