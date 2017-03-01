@@ -39,7 +39,7 @@ class StickyIcky extends Component{
   }
 
   handleResize = (event) => {
-    if(!this.isStuck() && window.innerWidth < 1280) return
+    if(!this.isStuck() || window.innerWidth < 1280) return
 
 
     // specific case: set technology list width when resizing
