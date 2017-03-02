@@ -94,9 +94,15 @@
       .info{
         border-left: solid 1px #318002;
         border-right: solid 1px #286b00;
+        &:hover{
+          border-left: solid 1px #83da18;
+        }
       }
       .repo{
         border-left: solid 1px #318002;
+        &:hover{
+          border-left: solid 1px #83da18;
+        }
       }
     }
   }
