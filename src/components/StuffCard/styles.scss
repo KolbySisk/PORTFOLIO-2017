@@ -13,21 +13,31 @@
     @extend %roboto-slab;
     color: $light-green;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
     position: absolute;
     top: 50%;
     width: 100%;
     text-align: center;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% - 10px));
+    z-index: 12;
   }
   img{
     width: 100%;
     vertical-align: middle;
     filter: saturate(.2);
     transition: all 0.2s ease;
-    &:hover{
-      filter: saturate(1);
+    position: relative;
+    &:after{
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 11;
+      background: radial-gradient(ellipse at center,  rgba(0,0,0,0.80) 0%,rgba(0,0,0,0) 100%);
     }
   }
   &:nth-child(3n){
