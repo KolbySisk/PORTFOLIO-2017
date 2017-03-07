@@ -27,7 +27,7 @@ class FloatingSpheres extends Component {
     setTimeout(() => {
       init()
       animate()
-    },500)
+    },1000)
 
     function toggleMode(){
       clickCount ++
