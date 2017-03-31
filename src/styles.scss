@@ -10,7 +10,7 @@
   font-style: normal;
 }
 *{
-  user-select: none;
+  outline: none;
 }
 ::selection {
   background: $light-green;
