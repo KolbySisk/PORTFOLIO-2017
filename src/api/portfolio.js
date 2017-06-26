@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_ENDPOINT = process.env.NODE_ENV === 'development' ? 'http://localhost:57144/api/' : 'http://kolby-sisk-portfolio.azurewebsites.net/api/'
+const API_ENDPOINT = process.env.NODE_ENV === 'development' ? 'http://localhost:57144/api/' : 'http://kolbysisk-001-site1.ftempurl.com/api/'
 
 axios.defaults.baseURL = API_ENDPOINT;
 
