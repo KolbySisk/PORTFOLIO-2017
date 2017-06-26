@@ -43,7 +43,6 @@ class StickyIcky extends Component{
 
     // specific case: set technology list width when resizing
     const containerWidth = document.querySelector('.container').getBoundingClientRect().width
-    const newWidth = containerWidth * .67
 
     if(this.state.context.ref.firstChild.className === 'technology-list__list'){
       const newWidth = containerWidth * .67
@@ -90,7 +89,7 @@ class StickyIcky extends Component{
 
     if(stickyIckyContext.ref.firstChild.className === 'sticky__title'){
       let technologyList = document.getElementsByClassName("technology-list__list ")
-      technologyList[0].style.marginTop = stickyIckyHeight * -1 + 'px'
+      technologyList[0].style.marginTop = (stickyIckyHeight+20) * -1 + 'px'
     }
 
     this.props.stickyIckyStopped(this.state.id)
