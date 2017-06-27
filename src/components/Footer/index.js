@@ -6,7 +6,7 @@ class Footer extends Component{
   render(){
     return (
       <section className="site-footer">
-        <header>
+        {/*<header>
           <nav className="footer-nav container">
             <a className="footer-nav-item" href="http://twitter.com/kolbysisk">
               <img src={'/images/icon-twitter.png'} alt="twitter icon" draggable="false"/>
@@ -21,7 +21,7 @@ class Footer extends Component{
               <h3>Blog</h3>
             </a>
           </nav>
-        </header>
+        </header>*/}
         <footer>
           <p>© 2017</p>
           <img src={'/images/logo-blue__small.png'} alt="my logo - kolby sisk :)#" draggable="false" onClick={ () => smoothScroll.animateScroll(0) }/>
